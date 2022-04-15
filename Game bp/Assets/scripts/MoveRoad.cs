@@ -3,24 +3,32 @@ using UnityEngine;
 
 public class MoveRoad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    /*void Start()
-    {
-        
-    }*/
-
-    // Update is called once per frame
-    
-    public float speed = 5f;
     public GameObject road;
-    // Update is called once per frame
+    private float speed = 50;
+    private bool isDown = false;
+
+    void Start()
+    {
+        CloneRoad(transform.position.y);
+    }
+
     void Update()
     {
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        var translation = Vector3.down * speed * Time.deltaTime;
+        CloneRoad(transform.position.y + translation.y);
+        transform.Translate(translation);
         if (transform.position.y < -15f)
         {
-            Instantiate(road, new Vector3(0f, 21f, 0f), Quaternion.identity);
             Destroy(gameObject);
+        }
+    }
+
+    private void CloneRoad(float currentY)
+    {
+        if (!isDown && currentY < 7f)
+        {
+            Instantiate(road, new Vector3(0f, currentY + 14.67f, 0f), Quaternion.identity);
+            isDown = true;
         }
     }
 }
