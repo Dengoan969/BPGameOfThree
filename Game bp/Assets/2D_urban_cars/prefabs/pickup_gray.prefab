@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491688}
   - component: {fileID: 21250238}
+  - component: {fileID: 5568178488567401286}
   m_Layer: 0
   m_Name: pickup_gray
   m_TagString: Untagged
@@ -272,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 131776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.06, y: 4.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0}
   m_Children:
   - {fileID: 428092}
   - {fileID: 463454}
@@ -333,6 +334,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5568178488567401286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 131776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &161962
 GameObject:
   m_ObjectHideFlags: 0
