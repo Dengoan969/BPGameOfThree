@@ -1,4 +1,3 @@
-using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class MoveRoad : MonoBehaviour
@@ -11,9 +10,8 @@ public class MoveRoad : MonoBehaviour
 
     // Update is called once per frame
     
-    public float speed = 5f;
+    private float speed = 5f;
     public GameObject road;
-    // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
