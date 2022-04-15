@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveObject : MonoBehaviour
 {
 
-    private float speed = 25f;
+    private float speed = 8f;
     void Update()
     {
         transform.Translate(Vector3.right * (speed * Time.deltaTime));

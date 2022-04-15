@@ -3,7 +3,7 @@ using UnityEngine;
 public class MoveRoad : MonoBehaviour
 {
     public GameObject road;
-    private float speed = 50;
+    public float speed;
     private bool isDown = false;
 
     void Start()
