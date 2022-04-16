@@ -1,3 +1,0 @@
-C:\Users\rmaof\Desktop\good_game_denis\BPGameOfThree\Game bp\obj\Debug\UnityEngine.UI.Player.csproj.AssemblyReference.cache
-C:\Users\rmaof\Desktop\good_game_denis\BPGameOfThree\Game bp\obj\Debug\UnityEngine.UI.Player.csproj.CoreCompileInputs.cache
-C:\Users\rmaof\Desktop\good_game_denis\BPGameOfThree\Game bp\obj\Debug\UnityEngine.UI.dll
