@@ -400,7 +400,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &979408865
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,20 +538,11 @@ MonoBehaviour:
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &1026171225
-=======
---- !u!1 &878732198 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 117612, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
-  m_PrefabInstance: {fileID: 91235666}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &878732200
->>>>>>> origin/merge1
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1026171223}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -576,15 +566,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
-  m_GameObject: {fileID: 878732198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38bad3efcb71e664f97ae6b2f4d2523b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 91235667}
->>>>>>> origin/merge1
 --- !u!1 &1104168338 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3665258606172690292, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
@@ -603,7 +584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   road: {fileID: 1104168338}
-<<<<<<< HEAD
 --- !u!1001 &1362509068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -661,9 +641,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb3763a445b5de4eb87236307133810, type: 3}
-=======
-  roadSpeed: 5
->>>>>>> origin/merge1
 --- !u!1 &1478539221
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,7 +689,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1 &1568238501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 117612, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
@@ -808,8 +784,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> origin/merge1
 --- !u!1001 &235842588529626
 PrefabInstance:
   m_ObjectHideFlags: 0
