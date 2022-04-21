@@ -8,24 +8,27 @@ public class PlayerControl : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        if (!GameStatistics.isGameOver)
         {
-            var rotation = Quaternion.Euler(0f, 0f, 100f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
-            var position = player.position;
-            player.position = MoveInsideBounds(position, -0.05f, -10f);
-        } 
-        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            var rotation = Quaternion.Euler(0f, 0f, 80f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
-            var position = player.position;
-            player.position = MoveInsideBounds(position, 0.05f, 10f);
-        }
-        else
-        {
-            var defaultRot = Quaternion.Euler(new Vector3(0f, 0f, 90f));
-            transform.rotation = Quaternion.Lerp(transform.rotation, defaultRot, speed * Time.deltaTime);
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                var rotation = Quaternion.Euler(0f, 0f, 100f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+                var position = player.position;
+                player.position = MoveInsideBounds(position, -0.05f, -10f);
+            }
+            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                var rotation = Quaternion.Euler(0f, 0f, 80f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
+                var position = player.position;
+                player.position = MoveInsideBounds(position, 0.05f, 10f);
+            }
+            else
+            {
+                var defaultRot = Quaternion.Euler(new Vector3(0f, 0f, 90f));
+                transform.rotation = Quaternion.Lerp(transform.rotation, defaultRot, speed * Time.deltaTime);
+            }
         }
     }
     

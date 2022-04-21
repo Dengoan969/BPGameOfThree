@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 public class MoveRoad : MonoBehaviour
 {
     public GameObject road;
-    private bool isDown = false;
+    private bool isDown;
 
     void Start()
     {

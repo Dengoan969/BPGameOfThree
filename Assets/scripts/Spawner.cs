@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
                 nextObject,
                 new Vector3(roadPositions[Random.Range(0, 4)], 9, -2), 
                 Quaternion.Euler(0, 0, 90)).name = nextObject.name;
-            yield return new WaitForSeconds(Random.Range(3, 5));
+            yield return new WaitForSeconds(Random.Range(2, 2));
         }
     }
 }

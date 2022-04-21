@@ -8,7 +8,7 @@ public class MainCar : MonoBehaviour
 
     void Start()
     {
-        speed = 1;
+        speed = 5f;
     }
 
     // Update is called once per frame
@@ -16,7 +16,7 @@ public class MainCar : MonoBehaviour
     {
         if (speed < 50 && !GameStatistics.isGameOver)
         {
-            speed += 0.1f;
+            speed += 0.1f * Time.deltaTime;
         }
     }
 
