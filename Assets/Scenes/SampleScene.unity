@@ -194,6 +194,30 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 21217438, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 21225134, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 201
+      objectReference: {fileID: 0}
+    - target: {fileID: 21240750, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 201
+      objectReference: {fileID: 0}
+    - target: {fileID: 21256546, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 21267792, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 201
+      objectReference: {fileID: 0}
+    - target: {fileID: 21272528, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
+      propertyPath: m_SortingOrder
+      value: 201
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
 --- !u!4 &91235667 stripped
@@ -320,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   road: {fileID: 1104168338}
-  roadSpeed: 0
+  roadSpeed: 5
 --- !u!1 &1478539221
 GameObject:
   m_ObjectHideFlags: 0

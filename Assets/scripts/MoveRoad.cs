@@ -16,7 +16,7 @@ public class MoveRoad : MonoBehaviour
     {
         if (roadSpeed <= 25)
         {
-            roadSpeed += 3f * Time.deltaTime;
+            roadSpeed += 0.1f * Time.deltaTime;
         }
         // TODO UpgradeSpeed() 
         
