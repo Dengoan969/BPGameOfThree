@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-
-    private float speed = 8f;
+    public float speed = 5f;
     void Update()
     {
-        transform.Translate(Vector3.right * (speed * Time.deltaTime));
+        // var a = GameObject.Find("MoveRoad").transform.Find("roadSpeed").GetComponent<MoveRoad>();
+        if (speed <= 25f)
+        {
+            speed += 1f * Time.deltaTime;
+        }
+        // TODO UpgradeSpeed() 
+
+        transform.Translate(Vector3.left * (speed * Time.deltaTime));
         if (transform.position.y < -9f)
         {
             Destroy(gameObject);

@@ -17,8 +17,8 @@ public class GenerateObstacle : MonoBehaviour
             Instantiate(
                 cars[Random.Range(0, cars.Length)],
                 new Vector3(positions[Random.Range(0, 4)], 9, 0), 
-                Quaternion.Euler(0, 0, 270));
-            yield return new WaitForSeconds(Random.Range(1, 3));
+                Quaternion.Euler(0, 0, 90));
+            yield return new WaitForSeconds(Random.Range(2, 2));
         }
     }
 }

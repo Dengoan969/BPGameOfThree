@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MoveRoad : MonoBehaviour
 {
     public GameObject road;
-    public float speed;
-    private bool isDown = false;
-
+    [FormerlySerializedAs("speed")] public float roadSpeed = 5f;
+    private bool isDown;
+    
     void Start()
     {
         CloneRoad(transform.position.y);
@@ -13,7 +14,13 @@ public class MoveRoad : MonoBehaviour
 
     void Update()
     {
-        var translation = Vector3.down * speed * Time.deltaTime;
+        if (roadSpeed <= 25)
+        {
+            roadSpeed += 3f * Time.deltaTime;
+        }
+        // TODO UpgradeSpeed() 
+        
+        var translation = Vector3.down * roadSpeed * Time.deltaTime;
         CloneRoad(transform.position.y + translation.y);
         transform.Translate(translation);
         if (transform.position.y < -15f)
