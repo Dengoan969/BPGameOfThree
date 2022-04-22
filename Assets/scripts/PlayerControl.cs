@@ -5,24 +5,25 @@ public class PlayerControl : MonoBehaviour
 
     private float speed = 6f;
     public Transform player;
+    public float delta = 0.05f;
     
     void Update()
     {
-        if (!GameStatistics.isGameOver)
+        if (!GameStatistics.IsGameOver)
         {
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 100f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, -0.05f, -10f);
+                player.position = MoveInsideBounds(position, -delta, -10f);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 80f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, 0.05f, 10f);
+                player.position = MoveInsideBounds(position, delta, 10f);
             }
             else
             {

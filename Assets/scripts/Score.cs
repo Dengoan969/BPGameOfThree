@@ -3,17 +3,16 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    private Text txt;
+    private Text score;
 
     void Start()
     {
-        txt = gameObject.GetComponent<Text>();
-        txt.text = "Score : " + GameStatistics.balance;
+        score = gameObject.GetComponent<Text>();
+        score.text = GameStatistics.Balance.ToString();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        txt.text = "Score : " + GameStatistics.balance;
+        score.text = GameStatistics.Balance.ToString();
     }
 }
