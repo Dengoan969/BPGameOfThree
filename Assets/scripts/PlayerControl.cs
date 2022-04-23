@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 
     private float speed = 6f;
     public Transform player;
-    public float delta = 0.03f;
+    public float delta = 0.05f;
     void Update()
     {
         // TODO fix delta
