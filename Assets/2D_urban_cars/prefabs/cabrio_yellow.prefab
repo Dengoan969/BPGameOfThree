@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 433868}
   - component: {fileID: 21259574}
   - component: {fileID: 8168723206422795676}
-  - component: {fileID: -4428621848419863980}
+  - component: {fileID: 8246291465788768652}
   m_Layer: 0
   m_Name: cabrio_yellow
   m_TagString: DeadObstacle
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-4428621848419863980
-BoxCollider2D:
+--- !u!60 &8246291465788768652
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,9 +286,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.6875, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.328125, y: 0.59375}
+      - {x: 1.875, y: 0.890625}
+      - {x: -0.671875, y: 0.890625}
+      - {x: -2.234375, y: 0.875}
+      - {x: -2.34375, y: 0.78125}
+      - {x: -2.34375, y: -0.8125}
+      - {x: -2.171875, y: -0.890625}
+      - {x: 1.796875, y: -0.890625}
+      - {x: 2.09375, y: -0.75}
+      - {x: 2.34375, y: -0.484375}
+      - {x: 2.34375, y: 0.4375}
 --- !u!1 &198044
 GameObject:
   m_ObjectHideFlags: 0

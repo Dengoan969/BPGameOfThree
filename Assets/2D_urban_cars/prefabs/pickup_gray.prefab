@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 491688}
   - component: {fileID: 21250238}
   - component: {fileID: 5568178488567401286}
-  - component: {fileID: 2920767503849269868}
+  - component: {fileID: 9188764847248351420}
   m_Layer: 0
   m_Name: pickup_gray
   m_TagString: DeadObstacle
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2920767503849269868
-BoxCollider2D:
+--- !u!60 &9188764847248351420
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -370,9 +370,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.125, y: 0.90625}
+      - {x: -2.5, y: 0.90625}
+      - {x: -2.5, y: -0.921875}
+      - {x: 2.484375, y: -0.921875}
+      - {x: 2.5, y: -0.796875}
+      - {x: 2.5, y: 0.640625}
 --- !u!1 &161962
 GameObject:
   m_ObjectHideFlags: 0

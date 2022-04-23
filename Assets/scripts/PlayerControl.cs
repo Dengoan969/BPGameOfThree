@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -5,24 +6,28 @@ public class PlayerControl : MonoBehaviour
 
     private float speed = 6f;
     public Transform player;
-    
+    public float delta = 0.03f;
     void Update()
     {
+        // TODO fix delta
         if (!GameStatistics.isGameOver)
         {
+            if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
+                delta += 0.01f;
+            
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 100f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, -0.05f, -10f);
+                player.position = MoveInsideBounds(position, -delta, -10f);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 80f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, 0.05f, 10f);
+                player.position = MoveInsideBounds(position, delta, 10f);
             }
             else
             {

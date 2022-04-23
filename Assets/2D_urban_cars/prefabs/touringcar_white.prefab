@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 461906}
   - component: {fileID: 21287480}
   - component: {fileID: 8648888991261125504}
-  - component: {fileID: 5120286067837581193}
+  - component: {fileID: 8698787004082488442}
   m_Layer: 0
   m_Name: touringcar_white
   m_TagString: DeadObstacle
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &5120286067837581193
-BoxCollider2D:
+--- !u!60 &8698787004082488442
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -370,9 +370,23 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.6875, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.984375, y: 0.859375}
+      - {x: 1.734375, y: 0.90625}
+      - {x: 1.46875, y: 0.90625}
+      - {x: 1.484375, y: 0.890625}
+      - {x: -1.171875, y: 0.890625}
+      - {x: -1.453125, y: 0.90625}
+      - {x: -1.96875, y: 0.90625}
+      - {x: -2.328125, y: 0.71875}
+      - {x: -2.34375, y: 0.65625}
+      - {x: -2.34375, y: -0.578125}
+      - {x: -2.21875, y: -0.78125}
+      - {x: -1.9375, y: -0.890625}
+      - {x: 1.875, y: -0.890625}
+      - {x: 2.296875, y: -0.53125}
+      - {x: 2.296875, y: 0.5}
 --- !u!1 &183228
 GameObject:
   m_ObjectHideFlags: 0

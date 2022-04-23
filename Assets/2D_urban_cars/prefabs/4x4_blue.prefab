@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 445150}
   - component: {fileID: 21269068}
   - component: {fileID: 2522016357008866191}
-  - component: {fileID: -3365852843584704296}
+  - component: {fileID: 5743823228621089077}
   m_Layer: 0
   m_Name: 4x4_blue
   m_TagString: DeadObstacle
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-3365852843584704296
-BoxCollider2D:
+--- !u!60 &5743823228621089077
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,9 +286,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.359375, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.1796875, y: 0.515625}
+      - {x: 2.0859375, y: 0.65625}
+      - {x: 1.8203125, y: 0.90625}
+      - {x: 1.2578125, y: 0.921875}
+      - {x: -1.9296875, y: 0.921875}
+      - {x: -2.1796875, y: 0.703125}
+      - {x: -2.1796875, y: -0.703125}
+      - {x: -1.9453125, y: -0.921875}
+      - {x: 1.8203125, y: -0.921875}
+      - {x: 2.1171875, y: -0.65625}
+      - {x: 2.1796875, y: -0.515625}
 --- !u!1 &199970
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Spawner : MonoBehaviour
     {
         StartCoroutine(Spawn(cars));
         StartCoroutine(Spawn(bonuses));
+        // StartCoroutine(Spawn(obstacles));
     }
 
     private IEnumerator Spawn(GameObject[] objects)

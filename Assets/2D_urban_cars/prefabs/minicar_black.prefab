@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 449912}
   - component: {fileID: 21227776}
   - component: {fileID: 881318292782315645}
-  - component: {fileID: -8140134422852301611}
+  - component: {fileID: 4027413580542280611}
   m_Layer: 0
   m_Name: minicar_black
   m_TagString: DeadObstacle
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-8140134422852301611
-BoxCollider2D:
+--- !u!60 &4027413580542280611
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,9 +286,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.59375, y: 1.90625}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.640625, y: 0.78125}
+      - {x: -1.796875, y: 0.546875}
+      - {x: -1.796875, y: -0.53125}
+      - {x: -1.65625, y: -0.71875}
+      - {x: -1.5, y: -0.78125}
+      - {x: 1.484375, y: -0.78125}
+      - {x: 1.796875, y: -0.625}
+      - {x: 1.796875, y: 0.640625}
+      - {x: 1.453125, y: 0.78125}
 --- !u!1 &170340
 GameObject:
   m_ObjectHideFlags: 0
