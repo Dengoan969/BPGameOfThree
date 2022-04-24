@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
+
     public void PlayGame()
     {
+        StopAllTracksByTag("MenuMusic");
         SceneManager.LoadScene("SampleScene");
     }
 
@@ -25,4 +25,16 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    private void StopAllTracksByTag(string inpTag)
+    {
+        var allTracksPlaying = CollectByTag(inpTag);
+        foreach (var track in allTracksPlaying)
+        {
+            track.GetComponent<UniMusic>().StopMusic();
+        }
+    }
+
+    private IEnumerable<GameObject> CollectByTag(string inpTag) => GameObject.FindGameObjectsWithTag(inpTag);
+
 }

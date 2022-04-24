@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -29,6 +30,13 @@ public class PlayerControl : MonoBehaviour
                 var position = player.position;
                 player.position = MoveInsideBounds(position, delta, 10f);
             }
+            else if (Input.GetKey(KeyCode.Escape))
+            {
+                StopAllTracksByTag("LevelOneMusic");
+                Destroy(GameObject.FindGameObjectWithTag("LevelOneMusic"));
+                GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
+                SceneManager.LoadScene("MenuScene");
+            }
             else
             {
                 var defaultRot = Quaternion.Euler(new Vector3(0f, 0f, 90f));
@@ -46,5 +54,14 @@ public class PlayerControl : MonoBehaviour
         return (pos + new Vector3(delta, 0, 0)).x <= bound
             ? player.position + new Vector3(delta, 0, 0)
             : player.position + Vector3.zero;
+    }
+    
+    private void StopAllTracksByTag(string inpTag)
+    {
+        var allTracksPlaying = GameObject.FindGameObjectsWithTag(inpTag);
+        foreach (var track in allTracksPlaying)
+        {
+            track.GetComponent<UniMusic>().StopMusic();
+        }
     }
 }
