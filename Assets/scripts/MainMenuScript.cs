@@ -4,13 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
-
     public void PlayGame()
     {
         StopAllTracksByTag("MenuMusic");
         SceneManager.LoadScene("SampleScene");
     }
 
+    public void ChooseLevel()
+    {
+        SceneManager.LoadScene("LevelChoice");
+    }
+    
     public void GoToSettingsMenu()
     {
         SceneManager.LoadScene("SettingScene");
