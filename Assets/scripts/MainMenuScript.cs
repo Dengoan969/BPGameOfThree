@@ -10,25 +10,13 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
-    public void ChooseLevel()
-    {
-        SceneManager.LoadScene("LevelChoice");
-    }
+    public void ChooseLevel() => SceneManager.LoadScene("LevelChoice");
     
-    public void GoToSettingsMenu()
-    {
-        SceneManager.LoadScene("SettingScene");
-    }
-
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MenuScene");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    public void GoToSettingsMenu() => SceneManager.LoadScene("SettingScene");
+    
+    public void GoToMainMenu() => SceneManager.LoadScene("MenuScene");
+    
+    public void QuitGame() => Application.Quit();
 
     private void StopAllTracksByTag(string inpTag)
     {
@@ -39,6 +27,6 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
-    private IEnumerable<GameObject> CollectByTag(string inpTag) => GameObject.FindGameObjectsWithTag(inpTag);
-
+    private IEnumerable<GameObject> CollectByTag(string inpTag) 
+        => GameObject.FindGameObjectsWithTag(inpTag);
 }

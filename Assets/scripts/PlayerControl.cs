@@ -10,8 +10,8 @@ public class PlayerControl : MonoBehaviour
     public float delta = 0.05f;
     void Update()
     {
-        // TODO fix delta
-        if (!GameStatistics.isGameOver)
+        // TODO make PAUSE at escape
+        if (!GameStatistics.IsGameOver)
         {
             if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
                 delta += 0.01f;
@@ -45,14 +45,14 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
-    private Vector3 MoveInsideBounds(Vector3 pos, float delta, float bound)
+    private Vector3 MoveInsideBounds(Vector3 pos, float inpDelta, float bound)
     {
         if (bound < 0)
-            return (pos + new Vector3(delta, 0, 0)).x >= bound
-                ? player.position + new Vector3(delta, 0, 0)
+            return (pos + new Vector3(inpDelta, 0, 0)).x >= bound
+                ? player.position + new Vector3(inpDelta, 0, 0)
                 : player.position + Vector3.zero;
-        return (pos + new Vector3(delta, 0, 0)).x <= bound
-            ? player.position + new Vector3(delta, 0, 0)
+        return (pos + new Vector3(inpDelta, 0, 0)).x <= bound
+            ? player.position + new Vector3(inpDelta, 0, 0)
             : player.position + Vector3.zero;
     }
     

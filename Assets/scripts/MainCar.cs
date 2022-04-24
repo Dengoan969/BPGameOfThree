@@ -14,7 +14,7 @@ public class MainCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speed < 50 && !GameStatistics.isGameOver)
+        if (speed < 50 && !GameStatistics.IsGameOver)
         {
             speed += 0.1f * Time.deltaTime;
         }
@@ -24,13 +24,13 @@ public class MainCar : MonoBehaviour
     {
         if (collision.gameObject.name == "Money")
         {
-            GameStatistics.balance += 10;
+            GameStatistics.Balance += 10;
             Destroy(collision.gameObject);
         }
         if(collision.gameObject.CompareTag("DeadObstacle"))
         {
             speed = 0;
-            GameStatistics.isGameOver = true;
+            GameStatistics.IsGameOver = true;
         }
     }
 }

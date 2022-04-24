@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UniMusic : MonoBehaviour
 {
@@ -13,20 +9,16 @@ public class UniMusic : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
+    
     public void PlayMusic()
     {
         if (audioSource.isPlaying)
-        {
             return;
-        }
-        
+
         audioSource.Play();
     }
 
-    public void StopMusic()
-    {
-        audioSource.Stop();
-    }
+    public void StopMusic() => audioSource.Stop();
 
     private void CheckByTagAndDestroy(string inpTag)
     {
