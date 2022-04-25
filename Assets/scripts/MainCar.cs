@@ -1,22 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MainCar : MonoBehaviour
 {
     public static float speed;
+    public static Vector3 stageSizes;
+    public static bool isStageSizesSet;
 
     void Start()
     {
-        speed = 5f;
+        if (!isStageSizesSet)
+        {
+            isStageSizesSet = true;
+            stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        }
+        speed = 0.3f * stageSizes.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (speed < 50 && !GameStatistics.IsGameOver)
+        if (speed < 2 * stageSizes.y && !Game.IsGameOver)
         {
-            speed += 0.1f * Time.deltaTime;
+            //speed += (float)Math.Log(speed, 50 * stageSizes.y);
+            speed += 0.01f * stageSizes.y * Time.deltaTime;
         }
     }
 
@@ -24,13 +30,13 @@ public class MainCar : MonoBehaviour
     {
         if (collision.gameObject.name == "Money")
         {
-            GameStatistics.Balance += 10;
+            Game.Balance += 10;
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.CompareTag("DeadObstacle"))
+        if (collision.gameObject.CompareTag("DeadObstacle"))
         {
             speed = 0;
-            GameStatistics.IsGameOver = true;
+            Game.IsGameOver = true;
         }
     }
 }

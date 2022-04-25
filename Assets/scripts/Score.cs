@@ -8,12 +8,12 @@ public class Score : MonoBehaviour
     void Start()
     {
         txt = gameObject.GetComponent<Text>();
-        txt.text = "Score : " + GameStatistics.Balance;
+        txt.text = "Score : " + Game.Balance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        txt.text = "Score : " + GameStatistics.Balance;
+        txt.text = "Score : " + Game.Balance;
     }
 }
