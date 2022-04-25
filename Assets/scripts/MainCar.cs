@@ -1,25 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MainCar : MonoBehaviour
 {
     public static float speed;
+    public static Vector3 stageSizes;
+    public static bool isStageSizesSet;
 
     void Start()
     {
-        speed = 5f;
+        if (!isStageSizesSet)
+        {
+            isStageSizesSet = true;
+            stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        }
+
+        speed = 0.3f * stageSizes.y;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!GameStatistics.IsGameOver)
         {
             GameStatistics.Fuel -= 0.05f * Time.deltaTime;
 
-            if (Math.Abs(transform.position.x) > 7.4)
+            if (Math.Abs(transform.position.x) > 0.28 * stageSizes.x)
             {
                 GameStatistics.Endurance -= 0.1f * Time.deltaTime;
             }
@@ -30,13 +35,13 @@ public class MainCar : MonoBehaviour
                 GameStatistics.IsGameOver = true;
             }
 
-            if (speed < 50 && !GameStatistics.IsGameOver)
+            if (speed < 2 * stageSizes.y && !GameStatistics.IsGameOver)
             {
-                speed += 0.1f * Time.deltaTime;
+                //speed += (float)Math.Log(speed, 50 * stageSizes.y);
+                speed += 0.01f * stageSizes.y * Time.deltaTime;
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Money")
@@ -44,7 +49,14 @@ public class MainCar : MonoBehaviour
             GameStatistics.Balance += 10;
             Destroy(collision.gameObject);
         }
-        if(collision.gameObject.CompareTag("DeadObstacle"))
+
+        if (collision.gameObject.name == "Fuel")
+        {
+            GameStatistics.Fuel = 1f;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("DeadObstacle"))
         {
             speed = 0;
             GameStatistics.IsGameOver = true;
