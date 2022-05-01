@@ -148,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 129.48912
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -155.74292
+      value: -155
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -697,8 +697,8 @@ RectTransform:
   m_Children:
   - {fileID: 709955318}
   - {fileID: 1256139795}
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1862352480}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -869,6 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a0efbacabc4c9fbd79e6e4c9d9228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roadSide: []
   cars:
   - {fileID: 186698, guid: 332e0e9fe16bf4567ae4083692f4fcbd, type: 3}
   - {fileID: 154818, guid: b236f43bbde914f6ebb0efe064ef7b64, type: 3}
@@ -879,6 +880,7 @@ MonoBehaviour:
   - {fileID: 178192, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
   bonuses:
   - {fileID: 5524539283176305387, guid: 0fae5dbd791b64a2eb5550606e53e979, type: 3}
+  fuel:
   - {fileID: 8331785662565986750, guid: e4b793e5bac6c43d9846ce79fb079469, type: 3}
   obstacles: []
 --- !u!4 &1478539223
@@ -1133,6 +1135,7 @@ Transform:
   - {fileID: 1478539223}
   - {fileID: 91235667}
   - {fileID: 1937260606}
+  - {fileID: 979408869}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1161,7 +1164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932416774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -341.0001, y: -53.100075, z: 538.92755}
+  m_LocalPosition: {x: -341.0001, y: -53.100075, z: 1000}
   m_LocalScale: {x: 8.568947, y: 8.568947, z: 8.568947}
   m_Children: []
   m_Father: {fileID: 709955318}
@@ -1513,7 +1516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1041623295027417328, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.659916
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1041623295027417328, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
       propertyPath: m_LocalRotation.w

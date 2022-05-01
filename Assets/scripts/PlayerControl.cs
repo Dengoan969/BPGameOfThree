@@ -39,6 +39,19 @@ public class PlayerControl : MonoBehaviour
         
         if (!GameStatistics.IsGameOver)
         {
+            if (player.position.x > 245f
+                || player.position.x < -245f)
+            {
+                player.position += new Vector3(0, -0.5f, 0);
+            }
+            else
+            {
+                if (player.position.y < -155f)
+                {
+                    player.position += new Vector3(0, 1f, 0);
+                }
+            }
+            
             if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
                 delta += 0.01f;
 
@@ -47,14 +60,14 @@ public class PlayerControl : MonoBehaviour
                 var rotation = Quaternion.Euler(0f, 0f, 100f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, -delta, -stageSizes.x / 2);
+                player.position = MoveInsideBounds(position, -delta, 30f + -stageSizes.x / 2);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 80f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, delta, stageSizes.x / 2);
+                player.position = MoveInsideBounds(position, delta, -30f + stageSizes.x / 2);
             }
             else
             {
@@ -74,6 +87,7 @@ public class PlayerControl : MonoBehaviour
             ? player.position + new Vector3(inpDelta, 0, 0)
             : player.position + Vector3.zero;
     }
+
 
     private void StopAllTracksByTag(string inpTag)
     {
