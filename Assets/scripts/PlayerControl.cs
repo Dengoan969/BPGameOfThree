@@ -29,13 +29,13 @@ public class PlayerControl : MonoBehaviour
             delta = 0.01f * MainCar.speed;
         }
         
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            StopAllTracksByTag("LevelOneMusic");
-            Destroy(GameObject.FindGameObjectWithTag("LevelOneMusic"));
-            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
-            SceneManager.LoadScene("MenuScene");
-        }
+        // if (Input.GetKey(KeyCode.Escape))
+        // {
+        //     StopAllTracksByTag("LevelOneMusic");
+        //     Destroy(GameObject.FindGameObjectWithTag("LevelOneMusic"));
+        //     GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
+        //     SceneManager.LoadScene("MenuScene");
+        // }
         
         if (!GameStatistics.IsGameOver)
         {
@@ -47,14 +47,14 @@ public class PlayerControl : MonoBehaviour
                 var rotation = Quaternion.Euler(0f, 0f, 100f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, -delta, -stageSizes.x / 2);
+                player.position = MoveInsideBounds(position, -delta, 30f + -stageSizes.x / 2);
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
                 var rotation = Quaternion.Euler(0f, 0f, 80f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, speed * Time.deltaTime);
                 var position = player.position;
-                player.position = MoveInsideBounds(position, delta, stageSizes.x / 2);
+                player.position = MoveInsideBounds(position, delta, -30f + stageSizes.x / 2);
             }
             else
             {
@@ -73,14 +73,5 @@ public class PlayerControl : MonoBehaviour
         return (pos + new Vector3(inpDelta, 0, 0)).x <= bound
             ? player.position + new Vector3(inpDelta, 0, 0)
             : player.position + Vector3.zero;
-    }
-
-    private void StopAllTracksByTag(string inpTag)
-    {
-        var allTracksPlaying = GameObject.FindGameObjectsWithTag(inpTag);
-        foreach (var track in allTracksPlaying)
-        {
-            track.GetComponent<UniMusic>().StopMusic();
-        }
     }
 }

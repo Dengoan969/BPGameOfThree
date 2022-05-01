@@ -1,3 +1,3 @@
 # BPGameOfThree
-Game within the framework of the course "basics of programming" | Create by Arseny aka Cauchy, Denis and Gleb
+A game project of the "basics of programming" course | Create by Arseny aka Cauchy, Denis and Gleb
 Original

@@ -7,7 +7,7 @@ public class MainMenuScript : MonoBehaviour
     public void PlayGame()
     {
         StopAllTracksByTag("MenuMusic");
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void ChooseLevel() => SceneManager.LoadScene("LevelChoice");

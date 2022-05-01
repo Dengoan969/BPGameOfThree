@@ -18,7 +18,7 @@ public class Spawner : MonoBehaviour
             isStageSizesSet = true;
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
-        roadPositions = new float[]{-0.15f * stageSizes.x, -0.05f * stageSizes.x,
+        roadPositions = new[]{-0.15f * stageSizes.x, -0.05f * stageSizes.x,
                                     0.15f * stageSizes.x, 0.05f * stageSizes.x};
         StartCoroutine(Spawn(cars));
         StartCoroutine(Spawn(bonuses));
