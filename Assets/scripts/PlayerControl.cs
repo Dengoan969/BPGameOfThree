@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -18,25 +17,16 @@ public class PlayerControl : MonoBehaviour
             isStageSizesSet = true;
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
-        //delta = 0.0025f * stageSizes.x;
+        // delta = 0.0025f * stageSizes.x;
         delta = 0.01f * MainCar.speed;
     }
     void Update()
     {
-        // TODO make PAUSE at escape
         if (delta < 0.01f * stageSizes.y)
         {
             delta = 0.01f * MainCar.speed;
         }
-        
-        // if (Input.GetKey(KeyCode.Escape))
-        // {
-        //     StopAllTracksByTag("LevelOneMusic");
-        //     Destroy(GameObject.FindGameObjectWithTag("LevelOneMusic"));
-        //     GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
-        //     SceneManager.LoadScene("MenuScene");
-        // }
-        
+
         if (!GameStatistics.IsGameOver)
         {
             if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)

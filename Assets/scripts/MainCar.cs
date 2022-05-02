@@ -52,7 +52,7 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.name == "Fuel")
         {
-            GameStatistics.Fuel = 1f;
+            GameStatistics.Fuel += 1f;
             Destroy(collision.gameObject);
         }
 

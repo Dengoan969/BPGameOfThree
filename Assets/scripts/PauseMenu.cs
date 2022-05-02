@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("GameScene");
         ResetStatistics();
+        // GameStatistics.IsGameOver = false;
     }
     
     public void Pause()
@@ -47,6 +48,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
         ResetStatistics();
+        
     }
 
     public void QuitGame()
@@ -55,10 +57,11 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    private void ResetStatistics()
+    private static void ResetStatistics()
     {
         GameStatistics.Fuel = 1f;
         GameStatistics.Endurance = 1f;
         GameStatistics.Balance = 0;
+        GameStatistics.IsGameOver = false;
     }
 }
