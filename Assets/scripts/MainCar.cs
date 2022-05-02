@@ -44,16 +44,17 @@ public class MainCar : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Money")
+        switch (collision.gameObject.name)
         {
-            GameStatistics.Balance += 10;
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.name == "Fuel")
-        {
-            GameStatistics.Fuel += 1f;
-            Destroy(collision.gameObject);
+            case "Money":
+                GameStatistics.Balance += 10;
+                Destroy(collision.gameObject);
+                break;
+            case "Fuel":
+                if (GameStatistics.Fuel <= 1f)
+                    GameStatistics.Fuel = 1f;
+                Destroy(collision.gameObject);
+                break;
         }
 
         if (collision.gameObject.CompareTag("DeadObstacle"))
