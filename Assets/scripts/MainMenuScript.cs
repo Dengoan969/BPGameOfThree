@@ -13,9 +13,13 @@ public class MainMenuScript : MonoBehaviour
     public void ChooseLevel() => SceneManager.LoadScene("LevelChoice");
     
     public void GoToSettingsMenu() => SceneManager.LoadScene("SettingScene");
-    
-    public void GoToMainMenu() => SceneManager.LoadScene("MenuScene");
-    
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
+    }
+
     public void QuitGame() => Application.Quit();
 
     private void StopAllTracksByTag(string inpTag)

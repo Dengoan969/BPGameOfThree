@@ -20,10 +20,14 @@ public class UniMusic : MonoBehaviour
 
     public void StopMusic() => audioSource.Stop();
 
+    public void PlayWithDelay(float delay)
+    {
+        audioSource.PlayDelayed(delay);
+    }
+
     private void CheckByTagAndDestroy(string inpTag)
     {
         var musicObj = GameObject.FindGameObjectsWithTag(inpTag);
-        
         if (musicObj.Length > 1)
         {
             Destroy(gameObject);

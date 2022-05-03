@@ -5,7 +5,7 @@ public class CheatCodes : MonoBehaviour
 {
     [SerializeField] public string buffer;
     [SerializeField] private float maxTimeDif = 1f;
-    private readonly List<string> validPatterns = new List<string> {"HESOYAM"};
+    private readonly List<string> validPatterns = new List<string> {"HESOYAM", "SPEEDUP"};
     private float timeDif;
     
     private void Start()
@@ -18,12 +18,12 @@ public class CheatCodes : MonoBehaviour
         timeDif -= Time.deltaTime;
         if (timeDif <= 0)
         {
-            buffer = "";
+            ClearBuffer();
         }
 
         if (Input.anyKeyDown)
         {
-            foreach (char c in Input.inputString)
+            foreach (var c in Input.inputString)
             {
                 AddToBuffer(c.ToString());
             }
@@ -43,7 +43,13 @@ public class CheatCodes : MonoBehaviour
         {
             Debug.Log("HESOYAM code was initialized");
             ImplementHesoyamCode();
-            buffer = "";
+            ClearBuffer();
+        }
+        else if (buffer.ToUpper().EndsWith(validPatterns[1]))
+        {
+            Debug.Log("SPEEDUP code was initialized");
+            ImplementSpeedUpCode();
+            ClearBuffer();
         }
     }
 
@@ -53,4 +59,10 @@ public class CheatCodes : MonoBehaviour
         GameStatistics.Endurance = float.MaxValue;
         GameStatistics.Fuel = float.MaxValue;
     }
+
+    private static void ImplementSpeedUpCode() => MainCar.speed = 750f;
+    
+
+    private void ClearBuffer() => buffer = string.Empty;
 }
+
