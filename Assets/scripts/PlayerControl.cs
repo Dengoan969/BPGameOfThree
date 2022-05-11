@@ -33,15 +33,7 @@ public class PlayerControl : MonoBehaviour
         {
             deltaAngle -= 0.002f;
         }
-        
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            StopAllTracksByTag("LevelOneMusic");
-            Destroy(GameObject.FindGameObjectWithTag("LevelOneMusic"));
-            GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
-            SceneManager.LoadScene("MenuScene");
-        }
-        
+
         if (!GameStatistics.IsGameOver)
         {
             if (player.position.x > 245f

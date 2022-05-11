@@ -5,7 +5,7 @@ public class MoveObject : MonoBehaviour
 {
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
-    public static Dictionary<string, float> carsSpeeds;
+    // public static Dictionary<string, float> carsSpeeds;
 
     private void Start()
     {
@@ -15,20 +15,20 @@ public class MoveObject : MonoBehaviour
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
 
-        carsSpeeds = new Dictionary<string, float>()
-        {
-            ["4x4_blue"] = 0.5f, 
-            ["cabrio_blue"] = 0.4f,
-            ["cabrio_yellow"] = 0.4f, 
-            ["minicar_black"] = 0.5f, 
-            ["pickup_gray"] = 0.5f,
-            ["pickup_red"] = 0.5f,
-            ["touringcar_white"] = 0.5f
-        };
+        // carsSpeeds = new Dictionary<string, float>()
+        // {
+        //     ["4x4_blue"] = 0.5f, 
+        //     ["cabrio_blue"] = 0.4f,
+        //     ["cabrio_yellow"] = 0.4f, 
+        //     ["minicar_black"] = 0.5f, 
+        //     ["pickup_gray"] = 0.5f,
+        //     ["pickup_red"] = 0.5f,
+        //     ["touringcar_white"] = 0.5f
+        // };
     }
     void Update()
     {
-        if (carsSpeeds.TryGetValue(gameObject.name, out var objectSpeed))
+        if (Spawner.CarsSpeeds.TryGetValue(gameObject.name, out var objectSpeed))
         {
             transform.Translate(Vector3.left * objectSpeed * MainCar.speed * Time.deltaTime);
         }
