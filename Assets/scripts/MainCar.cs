@@ -29,7 +29,7 @@ public class MainCar : MonoBehaviour
                 GameStatistics.Endurance -= 0.1f * Time.deltaTime;
             }
 
-            if (GameStatistics.Fuel <= 0 || GameStatistics.Endurance <= 0)
+            if (GameStatistics.Fuel <= 0 || GameStatistics.Endurance <= 0 || transform.position.y < -300f)
             {
                 speed = 0;
                 GameStatistics.IsGameOver = true;
@@ -62,5 +62,9 @@ public class MainCar : MonoBehaviour
             speed = 0;
             GameStatistics.IsGameOver = true;
         }
+    }
+    private void ShakeCar()
+    {
+        
     }
 }
