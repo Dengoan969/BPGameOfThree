@@ -256,7 +256,6 @@ GameObject:
   m_Component:
   - component: {fileID: 491688}
   - component: {fileID: 21250238}
-  - component: {fileID: 5568178488567401286}
   - component: {fileID: 9188764847248351420}
   m_Layer: 0
   m_Name: pickup_gray
@@ -335,18 +334,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5568178488567401286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &9188764847248351420
 PolygonCollider2D:
   m_ObjectHideFlags: 0

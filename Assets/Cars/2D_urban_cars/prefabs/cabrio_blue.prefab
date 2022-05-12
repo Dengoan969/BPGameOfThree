@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 440346}
   - component: {fileID: 21265746}
-  - component: {fileID: 3173235460025151344}
   - component: {fileID: 7165370936729246492}
   m_Layer: 0
   m_Name: cabrio_blue
@@ -87,18 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3173235460025151344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 154818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &7165370936729246492
 PolygonCollider2D:
   m_ObjectHideFlags: 0

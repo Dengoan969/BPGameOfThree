@@ -174,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 449912}
   - component: {fileID: 21227776}
-  - component: {fileID: 881318292782315645}
   - component: {fileID: 4027413580542280611}
   m_Layer: 0
   m_Name: minicar_black
@@ -251,18 +250,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &881318292782315645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b176a36f3c2447e89a47e50ba40c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &4027413580542280611
 PolygonCollider2D:
   m_ObjectHideFlags: 0

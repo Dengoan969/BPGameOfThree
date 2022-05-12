@@ -627,7 +627,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &418466179
 GameObject:
@@ -1135,15 +1135,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 169676549}
-  - {fileID: 350159947}
-  - {fileID: 1932416775}
-  - {fileID: 1281573946}
-  - {fileID: 2002882967}
-  - {fileID: 1709237994}
+  m_Children: []
   m_Father: {fileID: 979408869}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1244,7 +1238,7 @@ RectTransform:
   m_Children:
   - {fileID: 636498085}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1490,6 +1484,7 @@ RectTransform:
   m_Children:
   - {fileID: 1256139795}
   - {fileID: 1091547624}
+  - {fileID: 709955318}
   m_Father: {fileID: 1862352480}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1861,7 +1856,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237822146
 GameObject:
@@ -2139,18 +2134,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadSide: []
   cars:
-  - {fileID: 186698, guid: 332e0e9fe16bf4567ae4083692f4fcbd, type: 3}
-  - {fileID: 154818, guid: b236f43bbde914f6ebb0efe064ef7b64, type: 3}
-  - {fileID: 178776, guid: 95eeca97506be49969684235abb8c909, type: 3}
-  - {fileID: 156544, guid: f86261f66904e4852be422726704ee91, type: 3}
-  - {fileID: 131776, guid: e6cac1eac52fb46a8a91cb98b39bf6ab, type: 3}
-  - {fileID: 153812, guid: d52d0272c3cf24d2ca85e80069fb4656, type: 3}
-  - {fileID: 178192, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
+  - {fileID: 4707032978826525898, guid: d90a8283442103249bedaef8ad8af076, type: 3}
+  - {fileID: 4912878663324279450, guid: 91c052de8b3086c42a268a3db6436a16, type: 3}
+  - {fileID: 3098444308233088405, guid: c1e4d3692e6419947b60f1c3502a14cc, type: 3}
+  - {fileID: 6037688035281695579, guid: 6472344cce66e1948bfb83610c0db816, type: 3}
+  - {fileID: 5270463041298838882, guid: bc3af084f0785c044bc5ba1857da2440, type: 3}
+  - {fileID: 2398235256506917158, guid: e9078fc2a74e31c45a6601c39ce0e2c7, type: 3}
+  - {fileID: 1687607507670645125, guid: 351a6c0a7f5b05f48acd89090d34b83c, type: 3}
   bonuses:
-  - {fileID: 5524539283176305387, guid: 0fae5dbd791b64a2eb5550606e53e979, type: 3}
+  - {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
   fuel:
-  - {fileID: 8331785662565986750, guid: e4b793e5bac6c43d9846ce79fb079469, type: 3}
-  obstacles: []
+  - {fileID: 4543810677410362916, guid: 10c7363dd8e4b064b957d70addba5922, type: 3}
+  obstacles:
+  - {fileID: 891299295444657303, guid: d5cacb96bf1a31a458bbbdb88c123bbc, type: 3}
+  fuelStation: {fileID: 13039750294562716, guid: c2fb1e75076364145950805cdb813809, type: 3}
+  repairStation: {fileID: 444590072853558485, guid: 622595de4de31d841bfa34534f6ebe28, type: 3}
 --- !u!4 &1478539223
 Transform:
   m_ObjectHideFlags: 0

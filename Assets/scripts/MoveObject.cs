@@ -30,11 +30,11 @@ public class MoveObject : MonoBehaviour
     {
         if (Spawner.CarsSpeeds.TryGetValue(gameObject.name, out var objectSpeed))
         {
-            transform.Translate(Vector3.left * objectSpeed * MainCar.speed * Time.deltaTime);
+            transform.Translate(Vector3.down * objectSpeed * MainCar.speed * Time.deltaTime);
         }
         else
         {
-            transform.Translate(Vector3.left * (MainCar.speed * Time.deltaTime));
+            transform.Translate(Vector3.down * (MainCar.speed * Time.deltaTime));
         }
         
         if (transform.position.y < -stageSizes.y)
