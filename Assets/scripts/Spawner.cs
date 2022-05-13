@@ -87,12 +87,12 @@ public class Spawner : MonoBehaviour
             var nextObject = objects[randomGen.Next(0, objects.Length)];
             Instantiate(
                 nextObject,
-                new Vector3(positions[0], stageSizes.y, 0),
+                new Vector3(positions[0], stageSizes.y, -1),
                 Quaternion.identity).name = nextObject.name;
             nextObject = objects[randomGen.Next(0, objects.Length)];
             Instantiate(
                 nextObject,
-                new Vector3(positions[1], stageSizes.y, 0),
+                new Vector3(positions[1], stageSizes.y, -1),
                 Quaternion.identity).name = nextObject.name;
             while (MainCar.speed == 0)
             {
@@ -106,16 +106,16 @@ public class Spawner : MonoBehaviour
                 var roadsidePositions = new[] { -0.39f * stageSizes.x, 0.39f * stageSizes.x };
                 Instantiate(
                 fuelStation,
-                new Vector3(roadsidePositions[position], 1.6f * stageSizes.y, 0),
+                new Vector3(roadsidePositions[position], 1.6f * stageSizes.y, -1),
                 Quaternion.identity).name = fuelStation.name;
                 Instantiate(
                 fuel[0],
-                new Vector3(roadSide[position], 1.6f * stageSizes.y, 0),
+                new Vector3(roadSide[position], 1.6f * stageSizes.y, -1),
                 Quaternion.identity).name = fuel[0].name;
                 position = Math.Abs(position - 1);
                 Instantiate(
                 repairStation,
-                new Vector3(roadsidePositions[position], 1.6f * stageSizes.y, 0),
+                new Vector3(roadsidePositions[position], 1.6f * stageSizes.y, -1),
                 Quaternion.identity).name = nextObject.name;
                 time += 0.3f * stageSizes.y / (MainCar.speed);
             }
