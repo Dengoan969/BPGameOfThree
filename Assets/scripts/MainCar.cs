@@ -35,7 +35,7 @@ public class MainCar : MonoBehaviour
                 GameStatistics.IsGameOver = true;
             }
 
-            if (speed < 2 * stageSizes.y && !GameStatistics.IsGameOver)
+            if (speed < 2 * stageSizes.y)
             {
                 //speed += (float)Math.Log(speed, 50 * stageSizes.y);
                 speed += 0.01f * stageSizes.y * Time.deltaTime;

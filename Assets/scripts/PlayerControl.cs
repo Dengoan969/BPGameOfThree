@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 
     public Transform player;
     public float deltaSpeed;
-    public float deltaAngle = 10f;
+    public float deltaAngle;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
     private float speed = 6f;
@@ -23,17 +23,7 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        // TODO make PAUSE at escape
-        if (deltaSpeed < 0.01f * stageSizes.y)
-        {
-            deltaSpeed = 0.01f * MainCar.speed;
-        }
-        if (deltaAngle > 1f)
-        {
-            deltaAngle -= 0.002f;
-        }
-
-        if (!GameStatistics.IsGameOver)
+        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
         {
             if (player.position.x > 245f
                 || player.position.x < -245f)
@@ -46,6 +36,15 @@ public class PlayerControl : MonoBehaviour
                 {
                     player.position += new Vector3(0, 1f, 0);
                 }
+            }
+            
+            if (deltaSpeed < 0.01f * stageSizes.y)
+            {
+                deltaSpeed = 0.01f * MainCar.speed;
+            }
+            if (MainCar.speed / (2 * stageSizes.y) < 1 && deltaAngle > 2)
+            {
+                deltaAngle = (1 - MainCar.speed / (2 * stageSizes.y)) * 10f;
             }
             
             if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
