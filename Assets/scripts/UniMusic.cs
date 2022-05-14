@@ -5,9 +5,7 @@ public class UniMusic : MonoBehaviour
     private AudioSource audioSource;
     private void Awake()
     {
-        CheckByTagAndDestroy("MenuMusic");
         audioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
     }
     
     public void PlayMusic()

@@ -49,7 +49,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
-        ResetStatistics();
+        GameStatistics.Reset();
+        //ResetStatistics();
     }
 
     private static void ResetStatistics()

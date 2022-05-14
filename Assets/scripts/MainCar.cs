@@ -6,6 +6,7 @@ public class MainCar : MonoBehaviour
     public static float speed;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
+    //public AudioSource coinSound;
 
     void Start()
     {
@@ -48,6 +49,7 @@ public class MainCar : MonoBehaviour
         {
             case "Money":
                 GameStatistics.Balance += 10;
+                //coinSound.Play();
                 Destroy(collision.gameObject);
                 break;
             case "Fuel":

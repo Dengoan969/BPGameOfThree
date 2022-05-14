@@ -212,11 +212,11 @@ public class Spawner : MonoBehaviour
     {
         while (!GameStatistics.IsGameOver)
         {
-            var позиция = position[randomGen.Next(0, position.Length)];
+            var pos = position[randomGen.Next(0, position.Length)];
             for (var i = 0; i < count; i++)
             {
                 Instantiate(money,
-                    new Vector3(позиция, stageSizes.y, -2),
+                    new Vector3(pos, stageSizes.y, -2),
                     Quaternion.identity).name = money.name;
                 // yield return new WaitForSeconds(1 / (0.25f * (MainCar.speed / (0.3f * stageSizes.y))));
                 yield return new WaitForSeconds(0.25f);

@@ -13,7 +13,7 @@ public class MainMenuScript : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MenuScene");
-        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
+        // GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
     }
 
     public void QuitGame() => Application.Quit();
