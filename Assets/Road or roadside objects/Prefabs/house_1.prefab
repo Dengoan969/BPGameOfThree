@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7794122103366992708}
   m_Layer: 0
   m_Name: house_1
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7384889994641843770}
   - component: {fileID: 58521507093362917}
+  - component: {fileID: 4973007071686082324}
   m_Layer: 0
   m_Name: house_1
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,3 +114,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &4973007071686082324
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7842427116505160141}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.09, y: 4.28}
+    newSize: {x: 4.09, y: 4.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.9790697, y: -0.3684747}
+      - {x: 0.976019, y: -0.32463294}
+      - {x: 0.9798609, y: -0.12536706}
+      - {x: 0.9736458, y: -0.10689236}
+      - {x: 1.005, y: 0.14999999}
+      - {x: 0.98499995, y: 1.3399999}
+      - {x: -0.295, y: 1.77}
+      - {x: -0.325, y: 1.8199999}
+      - {x: -0.635, y: 1.6999999}
+      - {x: -0.87634027, y: 1.5632508}
+      - {x: -0.32763088, y: 1.8263147}
+      - {x: -0.51610124, y: 1.7281392}
+      - {x: -0.7455215, y: 1.6310427}
+      - {x: -0.885, y: 1.5699999}
+      - {x: -1.415, y: 1.3199999}
+      - {x: -1.435, y: 1.31}
+      - {x: -1.435, y: -0.83}
+      - {x: -1.405, y: -0.84999996}
+      - {x: -1.115, y: -0.87}
+      - {x: -1.105, y: -1.31}
+      - {x: -1.095, y: -1.67}
+      - {x: -1.0749999, y: -1.6899999}
+      - {x: 0.935, y: -1.6899999}
+      - {x: 0.955, y: -1.67}
+      - {x: 0.995, y: -1.13}
+      - {x: 0.97569263, y: -0.35999998}

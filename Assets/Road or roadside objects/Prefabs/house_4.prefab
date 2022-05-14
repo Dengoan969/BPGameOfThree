@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3026851727465273337}
   m_Layer: 0
   m_Name: house_4
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,9 +41,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4805618924947672259}
   - component: {fileID: 2775240599660819601}
+  - component: {fileID: 2371338059885310955}
   m_Layer: 0
   m_Name: house_4
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,3 +114,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2371338059885310955
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734046073055345842}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 4.11}
+    newSize: {x: 2.5, y: 4.11}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.65, y: 1.6949999}
+      - {x: -0.65, y: -0.825}
+      - {x: -0.59300244, y: -1.6293342}
+      - {x: -0.21661836, y: -1.6389463}
+      - {x: -0.19702092, y: -1.3187702}
+      - {x: 0.60716075, y: -1.3082125}
+      - {x: 0.62, y: 1.6949999}
+      - {x: 0.62, y: 1.6949999}
+      - {x: 0.62, y: 1.6949999}

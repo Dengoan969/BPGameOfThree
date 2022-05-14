@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6149491783878205910}
   - component: {fileID: 4563779056031610937}
+  - component: {fileID: 8634203455937665692}
   m_Layer: 0
   m_Name: house_8
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8634203455937665692
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117721675867776040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.71, y: 2.94}
+    newSize: {x: 3.71, y: 2.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.405, y: 0.74}
+      - {x: 1.375, y: 0.76}
+      - {x: 0.875, y: 0.96}
+      - {x: 0.325, y: 1.1899999}
+      - {x: 0.24499999, y: 1.1899999}
+      - {x: -0.305, y: 0.96}
+      - {x: -0.835, y: 0.78999996}
+      - {x: -0.875, y: 0.56}
+      - {x: -1.165, y: 0.47}
+      - {x: -1.185, y: 0.42}
+      - {x: -1.1949999, y: 0.08}
+      - {x: -1.475, y: -0.06}
+      - {x: -1.475, y: -0.48999998}
+      - {x: -1.435, y: -0.53}
+      - {x: -1.185, y: -0.53999996}
+      - {x: -1.185, y: -1.26}
+      - {x: -1.165, y: -1.28}
+      - {x: 1.3149999, y: -1.28}
+      - {x: 1.355, y: -1.26}
+      - {x: 1.385, y: -0.45999998}
+      - {x: 1.405, y: -0.45}
 --- !u!1 &6342689003649942075
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +140,7 @@ GameObject:
   - component: {fileID: 6585336759826102868}
   m_Layer: 0
   m_Name: house_8
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

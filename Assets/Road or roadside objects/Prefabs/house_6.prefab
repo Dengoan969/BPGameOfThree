@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 384976509215413795}
   - component: {fileID: 306860783572813682}
+  - component: {fileID: 516584661521900209}
   m_Layer: 0
   m_Name: house_6
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &516584661521900209
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418409660092478145}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.55, y: 3.65}
+    newSize: {x: 3.55, y: 3.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.155, y: 1.275}
+      - {x: 0.835, y: 1.485}
+      - {x: 0.645, y: 1.485}
+      - {x: 0.275, y: 1.3149999}
+      - {x: 0.275, y: 0.765}
+      - {x: -0.72499996, y: 0.78499997}
+      - {x: -1.055, y: 0.585}
+      - {x: -1.095, y: 0.525}
+      - {x: -1.2149999, y: -0.085}
+      - {x: -1.2149999, y: -0.49499997}
+      - {x: -1.0649999, y: -0.48499998}
+      - {x: -1.0749999, y: -0.755}
+      - {x: -0.995, y: -1.3149999}
+      - {x: 1.0649999, y: -1.3149999}
+      - {x: 1.115, y: -1.285}
+      - {x: 1.105, y: -0.525}
+      - {x: 1.155, y: -0.48499998}
 --- !u!1 &4725897732114902042
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +136,7 @@ GameObject:
   - component: {fileID: 8128233585527417642}
   m_Layer: 0
   m_Name: house_6
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

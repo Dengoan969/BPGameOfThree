@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7702337098829878703}
   - component: {fileID: 7616190662912591183}
+  - component: {fileID: 9001089429730346822}
   m_Layer: 0
   m_Name: fire_dep
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,6 +83,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &9001089429730346822
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6195859410235267040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.75, y: 3.72}
+    newSize: {x: 3.75, y: 3.72}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.235, y: -0.5}
+      - {x: 1.235, y: 0.98999995}
+      - {x: 1.015, y: 1.61}
+      - {x: 0.995, y: 1.65}
+      - {x: 0.835, y: 1.65}
+      - {x: 0.805, y: 1.64}
+      - {x: 0.475, y: 1.65}
+      - {x: -1.125, y: 1.65}
+      - {x: -1.2049999, y: 1.62}
+      - {x: -1.2049999, y: 0.65}
+      - {x: -1.265, y: 0.61}
+      - {x: -1.265, y: -0.42}
+      - {x: -1.235, y: -0.47}
+      - {x: -1.175, y: -1.65}
+      - {x: 0.965, y: -1.65}
+      - {x: 1.025, y: -1.5799999}
+      - {x: 1.025, y: -0.52}
+      - {x: 1.2149999, y: -0.51}
 --- !u!1 &7678088679401563412
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,7 +137,7 @@ GameObject:
   - component: {fileID: 99738943054887314}
   m_Layer: 0
   m_Name: fire_dep
-  m_TagString: Untagged
+  m_TagString: DeadObstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
