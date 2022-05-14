@@ -18,12 +18,12 @@ public class UniMusic : MonoBehaviour
         audioSource.Play();
     }
 
-    public void StopMusic() => audioSource.Stop();
-
-    public void PlayWithDelay(float delay)
+    public void PauseMusic()
     {
-        audioSource.PlayDelayed(delay);
+        audioSource.Pause();
     }
+    
+    public void StopMusic() => audioSource.Stop();
 
     private void CheckByTagAndDestroy(string inpTag)
     {

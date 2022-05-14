@@ -10,10 +10,6 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    public void ChooseLevel() => SceneManager.LoadScene("LevelChoice");
-    
-    public void GoToSettingsMenu() => SceneManager.LoadScene("SettingScene");
-
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MenuScene");
