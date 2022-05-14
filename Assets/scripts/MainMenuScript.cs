@@ -9,13 +9,7 @@ public class MainMenuScript : MonoBehaviour
         StopAllTracksByTag("MenuMusic");
         SceneManager.LoadScene("GameScene");
     }
-
-    public void GoToMainMenu()
-    {
-        SceneManager.LoadScene("MenuScene");
-        // GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<UniMusic>().PlayMusic();
-    }
-
+    
     public void QuitGame() => Application.Quit();
 
     private void StopAllTracksByTag(string inpTag)
