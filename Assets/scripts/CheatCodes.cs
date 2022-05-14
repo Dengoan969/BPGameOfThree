@@ -42,13 +42,15 @@ public class CheatCodes : MonoBehaviour
         if (buffer.ToUpper().EndsWith(validPatterns[0]))
         {
             Debug.Log("HESOYAM code was initialized");
-            ImplementHesoyamCode();
+            if (!GameStatistics.IsGameOver)
+                ImplementHesoyamCode();
             ClearBuffer();
         }
         else if (buffer.ToUpper().EndsWith(validPatterns[1]))
         {
             Debug.Log("SPEEDUP code was initialized");
-            ImplementSpeedUpCode();
+            if (!GameStatistics.IsGameOver)
+                ImplementSpeedUpCode();
             ClearBuffer();
         }
     }
@@ -61,7 +63,6 @@ public class CheatCodes : MonoBehaviour
     }
 
     private static void ImplementSpeedUpCode() => MainCar.speed = 750f;
-    
 
     private void ClearBuffer() => buffer = string.Empty;
 }
