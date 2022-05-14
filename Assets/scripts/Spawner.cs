@@ -10,12 +10,11 @@ public class Spawner : MonoBehaviour
 
     public GameObject[] cars;
     public GameObject[] bonuses;
-    public GameObject[] fuel;
-    public GameObject[] obstacles;
+    public GameObject[] outerRoadsideObjects;
+    public GameObject fuel;
     public GameObject fuelStation;
+    public GameObject repair;
     public GameObject repairStation;
-    private Vector3 stageSizes;
-    private readonly Random randomGen = new Random();
     public static readonly Dictionary<string, float> CarsSpeeds = new Dictionary<string, float>()
     {
         ["4x4_blue"] = 0.5f,
@@ -26,24 +25,22 @@ public class Spawner : MonoBehaviour
         ["pickup_red"] = 0.5f,
         ["touringcar_white"] = 0.5f
     };
-
-    // private Vector3 stageDimensions;
-    private float[] roadPositions; // -130 -45 45 130 0.15 0.05
+    private readonly Random randomGen = new Random();
+    private Vector3 stageSizes;
+    private float[] roadPositions;
     private float[] innerRoadside;
     void Start()
     {
-        stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        stageSizes = StageSizes.GetStageSizes();
         Debug.Log("x: " + stageSizes.x);
         Debug.Log("y: " + stageSizes.y);
         roadPositions = new[]{-0.1522f * stageSizes.x, -0.0527f * stageSizes.x,
                                     0.1522f * stageSizes.x, 0.0527f * stageSizes.x};
         innerRoadside = new[] { -0.25f * stageSizes.x, 0.25f * stageSizes.x };
-        //StartCoroutine(SpawnRoadObjects(cars, bonuses, roadPositions));
         StartCoroutine(Timer(7f));
-        StartCoroutine(SpawnRoadside(obstacles, new[] { -0.5f * stageSizes.x, 0.5f * stageSizes.x }));
+        StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] { -0.5f * stageSizes.x, 0.5f * stageSizes.x }));
         StartCoroutine(SpawnCars(cars, roadPositions, 1.5f));
         StartCoroutine(SpawnMoney(bonuses[0], roadPositions, 5));
-        //StartCoroutine(Spawn(fuel, roadSide, 2));
     }
 
     private IEnumerator SpawnCars(GameObject[] objects, float[] positions, float time)
@@ -95,9 +92,9 @@ public class Spawner : MonoBehaviour
                 new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, -1),
                 Quaternion.identity).name = fuelStation.name;
                 Instantiate(
-                fuel[0],
+                fuel,
                 new Vector3(innerRoadside[position], 1.557f * stageSizes.y, -1),
-                Quaternion.identity).name = fuel[0].name;
+                Quaternion.identity).name = fuel.name;
                 position = Math.Abs(position - 1);
                 Instantiate(
                 repairStation,
