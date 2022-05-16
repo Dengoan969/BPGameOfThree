@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class ButtonSwitchLanguage : MonoBehaviour
+public class BtnSwitchLang: MonoBehaviour
 {
     [SerializeField]
     private LocalizationManager localizationManager;
- 
-    public void OnButtonClick()
+
+    void OnButtonClick()
     {
         localizationManager.CurrentLanguage = name;
     }
