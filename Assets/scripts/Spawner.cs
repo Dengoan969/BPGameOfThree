@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     public GameObject fuelStation;
     public GameObject repair;
     public GameObject repairStation;
-    public static readonly Dictionary<string, float> CarsSpeeds = new Dictionary<string, float>()
+    public static readonly Dictionary<string, float> CarsSpeeds = new Dictionary<string, float>
     {
         ["4x4_blue"] = 0.5f,
         ["cabrio_blue"] = 0.5f,
@@ -37,28 +37,39 @@ public class Spawner : MonoBehaviour
         roadPositions = new[]{-0.1522f * stageSizes.x, -0.0527f * stageSizes.x,
                                     0.1522f * stageSizes.x, 0.0527f * stageSizes.x};
         innerRoadside = new[] { -0.25f * stageSizes.x, 0.25f * stageSizes.x };
-        StartCoroutine(Timer(7f));
-        StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] { -0.5f * stageSizes.x, 0.5f * stageSizes.x }));
-        StartCoroutine(SpawnCars(cars, roadPositions, 1.5f));
+        StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] {-0.5f * stageSizes.x, 0.5f * stageSizes.x}));
+        StartCoroutine(SpawnCars(cars));
         StartCoroutine(SpawnMoney(bonuses[0], roadPositions, 5));
     }
 
-    private IEnumerator SpawnCars(GameObject[] objects, float[] positions, float time)
+    private IEnumerator SpawnCars(GameObject[] objects)
     {
-        var carSpeedCoef = 0.15f * stageSizes.y * Time.deltaTime * 1.5f;
+        // var carSpeedCoef = 0.15f * stageSizes.y * Time.deltaTime * 3f;
         while (!GameStatistics.IsGameOver)
         {
             var nextObject = objects[randomGen.Next(0, objects.Length)];
-            Instantiate(
+            var newObject = Instantiate(
                 nextObject,
-                new Vector3(positions[randomGen.Next(0, positions.Length)], stageSizes.y, -1),
-                Quaternion.identity).name = nextObject.name;
+                new Vector3(0, stageSizes.y, -2),
+                Quaternion.identity);
+
+            if (randomGen.Next(0, 2) == 0)
+            {
+                newObject.transform.Rotate(0, 180, 0);
+            }
+            
+            newObject.transform.DetachChildren();
+            Destroy(newObject);
+            
             while (MainCar.speed == 0)
             {
                 yield return null;
             }
-            var time2 = carSpeedCoef / (0.5f * MainCar.speed * Time.deltaTime);
-            yield return new WaitForSeconds(time2);
+            
+            yield return Distance.WaitForDistance(1f * stageSizes.y);
+
+            // var time2 = carSpeedCoef / (0.5f * MainCar.speed * Time.deltaTime);
+            // yield return new WaitForSeconds(time2);
         }
     }
 
@@ -106,7 +117,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator Timer(float time)
+    /*private IEnumerator Timer(float time)
     {
         while (true)
         {
@@ -117,7 +128,7 @@ public class Spawner : MonoBehaviour
             maySpawn = true;
             yield return new WaitForSeconds(0.1f);
         }
-    }
+    }*/
     /*private float? moneyPos;
     private float[] previousCarsSpeeds;
     private int spawnCounter;*/
@@ -193,8 +204,6 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnMoney(GameObject money, float[] positions, int count)
     {
-        var moneySpeedCoef1 = 0.3f * stageSizes.y * Time.deltaTime * 0.25f;
-        var moneySpeedCoef2 = 0.3f * stageSizes.y * Time.deltaTime * 0.5f;
         while (!GameStatistics.IsGameOver)
         {
             var position = positions[randomGen.Next(0, positions.Length)];
@@ -208,11 +217,10 @@ public class Spawner : MonoBehaviour
                 {
                     yield return null;
                 }
-                yield return new WaitForSeconds(moneySpeedCoef1/(MainCar.speed * Time.deltaTime));
-            }
 
-            yield return new WaitForSeconds(moneySpeedCoef2 / (MainCar.speed * Time.deltaTime));
-            // moneyPos = null;
+                yield return Distance.WaitForDistance(0.07f * stageSizes.y);
+            }
+            yield return Distance.WaitForDistance(1f * stageSizes.y);
         }
     }
 }

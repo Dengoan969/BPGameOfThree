@@ -2063,13 +2063,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 4707032978826525898, guid: d90a8283442103249bedaef8ad8af076, type: 3}
-  - {fileID: 4912878663324279450, guid: 91c052de8b3086c42a268a3db6436a16, type: 3}
-  - {fileID: 3098444308233088405, guid: c1e4d3692e6419947b60f1c3502a14cc, type: 3}
-  - {fileID: 6037688035281695579, guid: 6472344cce66e1948bfb83610c0db816, type: 3}
-  - {fileID: 5270463041298838882, guid: bc3af084f0785c044bc5ba1857da2440, type: 3}
-  - {fileID: 2398235256506917158, guid: e9078fc2a74e31c45a6601c39ce0e2c7, type: 3}
-  - {fileID: 1687607507670645125, guid: 351a6c0a7f5b05f48acd89090d34b83c, type: 3}
+  - {fileID: 7931808625453250065, guid: 32fc7f522d77b6d4284d8703c82be20b, type: 3}
+  - {fileID: 2258550718126578317, guid: bc77ecc4f4ecd4141af7dd9b3ad2a199, type: 3}
+  - {fileID: 4297157192603105044, guid: b216980ad0473ae4e8f4625ffee52f68, type: 3}
+  - {fileID: 6851764818892924493, guid: 898e317b4e8229e4cb00008f5c3e26fa, type: 3}
+  - {fileID: 6851764818892924493, guid: 747fe90488fe35b4dbc869a9894cadeb, type: 3}
+  - {fileID: 6851764818892924493, guid: e398abb056ea4bd4e97a8a9d762fb5a4, type: 3}
   bonuses:
   - {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
   outerRoadsideObjects:
@@ -2112,6 +2111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c686e0b7fcb0504bbc02a45085646cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerRef: {fileID: 1568238501}
 --- !u!50 &1568238504
 Rigidbody2D:
   serializedVersion: 4

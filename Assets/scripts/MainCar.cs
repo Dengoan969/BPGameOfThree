@@ -6,6 +6,8 @@ public class MainCar : MonoBehaviour
     public static float speed;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
+    public static GameObject Player;
+    public GameObject PlayerRef;
 
     void Start()
     {
@@ -15,6 +17,7 @@ public class MainCar : MonoBehaviour
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
 
+        Player = PlayerRef;
         speed = 0.3f * stageSizes.y;
     }
 

@@ -58,6 +58,7 @@ public class CheatCodes : MonoBehaviour
         GameStatistics.Balance += 250000;
         GameStatistics.Endurance = float.MaxValue;
         GameStatistics.Fuel = float.MaxValue;
+        ((PolygonCollider2D) MainCar.Player.GetComponent(typeof(PolygonCollider2D))).enabled = false;
     }
 
     private static void ImplementSpeedUpCode() => MainCar.speed = 750f;
