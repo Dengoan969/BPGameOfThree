@@ -10,3 +10,6 @@ go_fullscr;Go FullScreen;Полный экран
 quit;Quit;Выход
 sets;Settings;Настройки
 drive;Drive;Поехали
+resume;Resume;Продолжить
+restart;Restart;Заново
+to_menu;Menu;Меню
