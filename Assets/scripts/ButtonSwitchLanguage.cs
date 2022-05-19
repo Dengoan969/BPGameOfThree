@@ -5,7 +5,7 @@ public class BtnSwitchLang: MonoBehaviour
     [SerializeField]
     private LocalizationManager localizationManager;
 
-    void OnButtonClick()
+    public void OnButtonClick()
     {
         localizationManager.CurrentLanguage = name;
     }
