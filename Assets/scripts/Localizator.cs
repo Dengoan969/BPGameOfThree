@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using TMPro;
 
 public class Localizator : MonoBehaviour
 {
     public string id;
-    public void Awake()
+    public void Update()
     {  
         // если язык выбран...
         if (PlayerPrefs.HasKey("GameLanguage"))
@@ -20,11 +21,8 @@ public class Localizator : MonoBehaviour
         }
     }
 
-    private void ChangeText(string newText)
-    {
-        // вставляем текст в текстовое поле объекта на котором висит скрипт
-        GetComponent<Text>().text = newText;
-    }
+    private void ChangeText(string newText) => GetComponent<TMP_Text>().text = newText;
+    
   
     private string GetBetterLocalizedText(string id, string lang)
     {  
