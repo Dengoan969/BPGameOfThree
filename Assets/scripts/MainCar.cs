@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections;
 
 public class MainCar : MonoBehaviour
 {
@@ -19,14 +20,13 @@ public class MainCar : MonoBehaviour
 
         Player = PlayerRef;
         speed = 0.3f * stageSizes.y;
+        StartCoroutine(FuelControl());
     }
 
     void Update()
     {
         if (!GameStatistics.IsGameOver)
         {
-            GameStatistics.Fuel -= 0.05f * Time.deltaTime;
-
             if (Math.Abs(transform.position.x) > 0.28 * stageSizes.x)
             {
                 GameStatistics.Endurance -= 0.1f * Time.deltaTime;
@@ -45,6 +45,16 @@ public class MainCar : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator FuelControl()
+    {
+        while (!GameStatistics.IsGameOver)
+        {
+            yield return Distance.WaitForDistance(0.01f*stageSizes.y);
+            GameStatistics.Fuel -= 0.05f * Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.name)
