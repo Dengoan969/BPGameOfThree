@@ -45,9 +45,15 @@ public class Spawner : MonoBehaviour
     private IEnumerator SpawnCars(GameObject[] objects)
     {
         // var carSpeedCoef = 0.15f * stageSizes.y * Time.deltaTime * 3f;
+        var previousObject = objects[0];
         while (!GameStatistics.IsGameOver)
         {
             var nextObject = objects[randomGen.Next(0, objects.Length)];
+            if(nextObject == previousObject)
+            {
+                continue;
+            }
+            previousObject = nextObject;
             var newObject = Instantiate(
                 nextObject,
                 new Vector3(0, stageSizes.y, -2),
@@ -207,18 +213,13 @@ public class Spawner : MonoBehaviour
         while (!GameStatistics.IsGameOver)
         {
             var position = positions[randomGen.Next(0, positions.Length)];
+            var shift = 0f;
             for (var i = 0; i < count; i++)
             {
                 Instantiate(money,
-                    new Vector3(position, stageSizes.y, -2),
+                    new Vector3(position, stageSizes.y + shift, -2),
                     Quaternion.identity).name = money.name;
-                // yield return new WaitForSeconds(1 / (0.25f * (MainCar.speed / (0.3f * stageSizes.y))));
-                while(MainCar.speed == 0)
-                {
-                    yield return null;
-                }
-
-                yield return Distance.WaitForDistance(0.07f * stageSizes.y);
+                shift += 0.1f * stageSizes.y;
             }
             yield return Distance.WaitForDistance(1f * stageSizes.y);
         }

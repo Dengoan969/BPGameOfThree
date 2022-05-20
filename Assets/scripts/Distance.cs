@@ -11,6 +11,8 @@ public class Distance
         {
             currentDistance += MainCar.speed * Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
+            //currentDistance += MainCar.speed * Time.fixedDeltaTime;
+            //yield return new WaitForSeconds(Time.fixedDeltaTime / MainCar.speed);
         }
     }
 }
