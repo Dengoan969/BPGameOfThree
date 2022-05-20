@@ -92,6 +92,10 @@ public class Spawner : MonoBehaviour
                 continue;
             }
             previousObject = nextObject;
+            if(nextObject.CompareTag("Obstacle"))
+            {
+                yield return Distance.WaitForDistance(0.5f*stageSizes.y);
+            }
             var newObject = Instantiate(
                 nextObject,
                 new Vector3(0, stageSizes.y, -2),
