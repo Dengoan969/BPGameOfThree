@@ -29,6 +29,7 @@ public class Spawner : MonoBehaviour
     private Vector3 stageSizes;
     private float[] roadPositions;
     private float[] innerRoadside;
+
     void Start()
     {
         stageSizes = StageSizes.GetStageSizes();
@@ -37,9 +38,43 @@ public class Spawner : MonoBehaviour
         roadPositions = new[]{-0.1522f * stageSizes.x, -0.0527f * stageSizes.x,
                                     0.1522f * stageSizes.x, 0.0527f * stageSizes.x};
         innerRoadside = new[] { -0.25f * stageSizes.x, 0.25f * stageSizes.x };
-        StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] {-0.5f * stageSizes.x, 0.5f * stageSizes.x}));
+        StartCoroutine(SpawnFuel());
+        StartCoroutine(SpawnRepair());
+        StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] { -0.5f * stageSizes.x, 0.5f * stageSizes.x }));
         StartCoroutine(SpawnCars(cars));
         StartCoroutine(SpawnMoney(bonuses[0], roadPositions, 5));
+    }
+
+    private IEnumerator SpawnFuel()
+    {
+        while (true)
+        {
+            if (!maySpawnFuel)
+            {
+                if(GameStatistics.Fuel>0.5f)
+                    yield return Distance.WaitForDistance((float)(randomGen.NextDouble() * 4 + 1) * stageSizes.y);
+                else
+                    yield return Distance.WaitForDistance((float)randomGen.NextDouble()*2 * stageSizes.y);
+                maySpawnFuel = true;
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    private IEnumerator SpawnRepair()
+    {
+        while (true)
+        {
+            if (!maySpawnRepair)
+            {
+                if(GameStatistics.Endurance>0.5f)
+                    yield return Distance.WaitForDistance((float)(randomGen.NextDouble() * 4 + 1) * stageSizes.y);
+                else
+                    yield return Distance.WaitForDistance((float)randomGen.NextDouble() * 2 * stageSizes.y);
+                maySpawnRepair = true;
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     private IEnumerator SpawnCars(GameObject[] objects)
@@ -49,7 +84,7 @@ public class Spawner : MonoBehaviour
         while (!GameStatistics.IsGameOver)
         {
             var nextObject = objects[randomGen.Next(0, objects.Length)];
-            if(nextObject == previousObject)
+            if (nextObject == previousObject)
             {
                 continue;
             }
@@ -63,15 +98,15 @@ public class Spawner : MonoBehaviour
             {
                 newObject.transform.Rotate(0, 180, 0);
             }
-            
+
             newObject.transform.DetachChildren();
             Destroy(newObject);
-            
+
             while (MainCar.speed == 0)
             {
                 yield return null;
             }
-            
+
             yield return Distance.WaitForDistance(1f * stageSizes.y);
 
             // var time2 = carSpeedCoef / (0.5f * MainCar.speed * Time.deltaTime);
@@ -79,7 +114,8 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private bool maySpawn;
+    private bool maySpawnFuel;
+    private bool maySpawnRepair;
     private IEnumerator SpawnRoadside(GameObject[] objects, float[] positions)
     {
         while (!GameStatistics.IsGameOver)
@@ -99,11 +135,14 @@ public class Spawner : MonoBehaviour
                 yield return null;
             }
             var time = 0.667f * stageSizes.y / (MainCar.speed);
-            if (maySpawn)
+            var position = -1;
+            var roadsidePositions = new[] { -0.39f * stageSizes.x, 0.39f * stageSizes.x };
+            if (maySpawnFuel || maySpawnRepair)
+                time += 0.557f * stageSizes.y / (MainCar.speed);
+            if (maySpawnFuel)
             {
-                maySpawn = false;
-                var position = randomGen.Next(0, 2);
-                var roadsidePositions = new[] { -0.39f * stageSizes.x, 0.39f * stageSizes.x };
+                maySpawnFuel = false;
+                position = randomGen.Next(0, 2);
                 Instantiate(
                 fuelStation,
                 new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, -1),
@@ -112,12 +151,22 @@ public class Spawner : MonoBehaviour
                 fuel,
                 new Vector3(innerRoadside[position], 1.557f * stageSizes.y, -1),
                 Quaternion.identity).name = fuel.name;
-                position = Math.Abs(position - 1);
+            }
+            if (maySpawnRepair)
+            {
+                maySpawnRepair = false;
+                if (position != -1)
+                    position = Math.Abs(position - 1);
+                else
+                    position = randomGen.Next(0, 2);
                 Instantiate(
                 repairStation,
                 new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, -1),
                 Quaternion.identity).name = nextObject.name;
-                time += 0.557f * stageSizes.y / (MainCar.speed);
+                Instantiate(
+                repair,
+                new Vector3(innerRoadside[position], 1.557f * stageSizes.y, -1),
+                Quaternion.identity).name = repair.name;
             }
             yield return new WaitForSeconds(time);
         }
