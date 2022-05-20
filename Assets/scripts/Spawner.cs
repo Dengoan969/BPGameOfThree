@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnFuel()
     {
-        while (true)
+        while (!GameStatistics.IsGameOver)
         {
             if (!maySpawnFuel)
             {
@@ -63,7 +63,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnRepair()
     {
-        while (true)
+        while (!GameStatistics.IsGameOver)
         {
             if (!maySpawnRepair)
             {
