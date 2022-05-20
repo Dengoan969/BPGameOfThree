@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour
     public GameObject fuelStation;
     public GameObject repair;
     public GameObject repairStation;
+    public GameObject lamp;
+    public GameObject innerRoadsideObjects;
     public static readonly Dictionary<string, float> CarsSpeeds = new Dictionary<string, float>
     {
         ["4x4_blue"] = 0.5f,
@@ -40,6 +42,7 @@ public class Spawner : MonoBehaviour
         innerRoadside = new[] { -0.25f * stageSizes.x, 0.25f * stageSizes.x };
         StartCoroutine(SpawnFuel());
         StartCoroutine(SpawnRepair());
+        StartCoroutine(SpawnInnerRoadside());
         StartCoroutine(SpawnRoadside(outerRoadsideObjects, new[] { -0.5f * stageSizes.x, 0.5f * stageSizes.x }));
         StartCoroutine(SpawnCars(cars));
         StartCoroutine(SpawnMoney(bonuses[0], roadPositions, 5));
@@ -172,6 +175,27 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    private IEnumerator SpawnInnerRoadside()
+    {
+        while (!GameStatistics.IsGameOver)
+        {
+            while (MainCar.speed == 0)
+            {
+                yield return null;
+            }
+            Instantiate(
+                    lamp,
+                    new Vector3(innerRoadside[0], stageSizes.y, -3),
+                    Quaternion.identity).name = lamp.name;
+            var newLamp = Instantiate(
+                    lamp,
+                    new Vector3(innerRoadside[1], stageSizes.y, -3),
+                    Quaternion.identity);
+            newLamp.name = lamp.name;
+            newLamp.transform.Rotate(0, 180, 0);
+            yield return Distance.WaitForDistance(0.5f * stageSizes.y);
+        }
+    }
     /*private IEnumerator Timer(float time)
     {
         while (true)

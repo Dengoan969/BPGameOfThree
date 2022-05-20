@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.659916
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1941,7 +1941,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326139804}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1201, y: 145, z: 0}
+  m_LocalPosition: {x: -1100.2, y: -18.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1637935053}
@@ -2078,8 +2078,10 @@ MonoBehaviour:
   - {fileID: 7424966237378565321, guid: ea15b8b7168542741986f03316bc5774, type: 3}
   fuel: {fileID: 4543810677410362916, guid: 10c7363dd8e4b064b957d70addba5922, type: 3}
   fuelStation: {fileID: 13039750294562716, guid: c2fb1e75076364145950805cdb813809, type: 3}
-  repair: {fileID: 0}
+  repair: {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
   repairStation: {fileID: 444590072853558485, guid: 622595de4de31d841bfa34534f6ebe28, type: 3}
+  lamp: {fileID: 3390685208416317617, guid: 5cc7f43d4926e8b439b1a3f1bfa8b86b, type: 3}
+  innerRoadsideObjects: {fileID: 0}
 --- !u!4 &1478539223
 Transform:
   m_ObjectHideFlags: 0
@@ -2542,7 +2544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967680677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1104168340}
