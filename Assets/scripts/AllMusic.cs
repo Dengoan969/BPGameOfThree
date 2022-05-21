@@ -7,6 +7,7 @@ public class AllMusic : MonoBehaviour
 {
     public TMP_Dropdown musicDropdown;
     public static string CurrentTrack;
+    public static AudioSource CurrentPlaying;
     private static readonly List<string> MyTracks = new List<string>
     {
         "LevelOneMusic", "Layla", 
@@ -44,5 +45,6 @@ public class AllMusic : MonoBehaviour
         composition.volume = PlayerPrefs.GetFloat("PVolume");
         PlayerPrefs.SetString("CurrentMusic", MyTracks[newMus]);
         CurrentTrack = MyTracks[newMus];
+        CurrentPlaying = composition;
     }
 }
