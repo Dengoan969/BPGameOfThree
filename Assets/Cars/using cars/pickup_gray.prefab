@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pickup_gray
       objectReference: {fileID: 0}
+    - target: {fileID: 482336, guid: e6cac1eac52fb46a8a91cb98b39bf6ab, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 491688, guid: e6cac1eac52fb46a8a91cb98b39bf6ab, type: 3}
       propertyPath: m_RootOrder
       value: 0

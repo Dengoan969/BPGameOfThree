@@ -98,14 +98,18 @@ public class Spawner : MonoBehaviour
             }
             var newObject = Instantiate(
                 nextObject,
-                new Vector3(0, stageSizes.y, -2),
+                new Vector3(0, stageSizes.y, -3),
                 Quaternion.identity);
 
             if (randomGen.Next(0, 2) == 0)
             {
                 newObject.transform.Rotate(0, 180, 0);
+                foreach (Transform child in newObject.transform)
+                {
+                    child.Rotate(0, 180, 0);
+                }
             }
-
+            
             newObject.transform.DetachChildren();
             Destroy(newObject);
 
