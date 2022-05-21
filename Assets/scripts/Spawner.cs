@@ -197,7 +197,7 @@ public class Spawner : MonoBehaviour
                     Quaternion.identity);
             newLamp.name = lamp.name;
             newLamp.transform.Rotate(0, 180, 0);
-            yield return Distance.WaitForDistance(0.5f * stageSizes.y);
+            yield return Distance.WaitForDistance(0.9f*stageSizes.y);
         }
     }
     /*private IEnumerator Timer(float time)
