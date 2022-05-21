@@ -289,7 +289,7 @@ public class Spawner : MonoBehaviour
     {
         while (!GameStatistics.IsGameOver)
         {
-            var position = positions[randomGen.Next(0, positions.Length)];
+         var position = positions[randomGen.Next(0, positions.Length)];
             var shift = 0f;
             for (var i = 0; i < count; i++)
             {

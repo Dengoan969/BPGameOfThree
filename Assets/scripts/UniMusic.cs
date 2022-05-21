@@ -5,9 +5,7 @@ public class UniMusic : MonoBehaviour
     private AudioSource audioSource;
     private void Awake()
     {
-        CheckByTagAndDestroy("MenuMusic");
         audioSource = GetComponent<AudioSource>();
-        DontDestroyOnLoad(gameObject);
     }
     
     public void PlayMusic()
@@ -18,12 +16,12 @@ public class UniMusic : MonoBehaviour
         audioSource.Play();
     }
 
-    public void StopMusic() => audioSource.Stop();
-
-    public void PlayWithDelay(float delay)
+    public void PauseMusic()
     {
-        audioSource.PlayDelayed(delay);
+        audioSource.Pause();
     }
+    
+    public void StopMusic() => audioSource.Stop();
 
     private void CheckByTagAndDestroy(string inpTag)
     {

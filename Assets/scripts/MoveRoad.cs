@@ -36,7 +36,10 @@ public class MoveRoad : MonoBehaviour
     {
         if (!isDown && currentY < stageSizes.y)
         {
-            Instantiate(road, new Vector3(0f, currentY + stageSizes.y, 0f), Quaternion.identity).name = road.name;
+            Instantiate(road, 
+                new Vector3(0f, currentY + stageSizes.y, 0f), 
+                Quaternion.identity).name 
+                = road.name;
             isDown = true;
         }
     }

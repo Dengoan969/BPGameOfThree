@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Resolutions : MonoBehaviour
 {
     Resolution[] rsl;
     List<string> resolutions;
-    public Dropdown dropdown;
+    public TMP_Dropdown dropdown;
     public void Awake()
     {
         resolutions = new List<string>();

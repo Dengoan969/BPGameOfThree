@@ -61,6 +61,7 @@ public class MainCar : MonoBehaviour
         {
             case "Money":
                 GameStatistics.Balance += 10;
+                //coinSound.Play();
                 Destroy(collision.gameObject);
                 break;
             case "Fuel":
