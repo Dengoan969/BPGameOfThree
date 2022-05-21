@@ -34,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
+        PlayerPrefs.SetString("CurrentMusic", AllMusic.currentTrack);
         SceneManager.LoadScene("GameScene");
         ResetStatistics();
     }

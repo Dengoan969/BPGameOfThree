@@ -11,6 +11,8 @@ TagManager:
   - LocalizationManager
   - Layla
   - LOTDestroyable
+  - DLB_Zajchik
+  - 500miles
   layers:
   - Default
   - TransparentFX
