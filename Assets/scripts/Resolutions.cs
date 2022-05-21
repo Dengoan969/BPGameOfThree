@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Resolutions : MonoBehaviour
 {
-    Resolution[] rsl;
-    List<string> resolutions;
+    private Resolution[] rsl;
+    private List<string> resolutions;
     public TMP_Dropdown dropdown;
     public void Awake()
     {

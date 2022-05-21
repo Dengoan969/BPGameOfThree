@@ -1,39 +1,48 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
 public class AllMusic : MonoBehaviour
 {
     public TMP_Dropdown musicDropdown;
-    private static readonly List<string> myTracks = new List<string> 
-        {"LevelOneMusic", "Layla", "DLB_Zajchik", "500miles"};
+    public static string CurrentTrack;
+    private static readonly List<string> MyTracks = new List<string>
+    {
+        "LevelOneMusic", "Layla", 
+        "DLB_Zajchik", "500miles", 
+        "Knight", "MatMehHymn", 
+        "TikhiyOgonek", "Malchik_na_9",
+        "Ot_Vinta", "GaParadise", 
+        "Upgrade", "EmptyDreams"
+    };
 
-    public static string currentTrack;
+    
     void Awake()
     {
         musicDropdown.ClearOptions();
-        musicDropdown.AddOptions(myTracks);
+        musicDropdown.AddOptions(MyTracks);
     }
 
     private void StopPlayingMusic()
     {
-        foreach (var localTag in myTracks)
+        foreach (var temp in MyTracks
+                     .Select(localTag
+                         => GameObject
+                             .FindGameObjectWithTag(localTag).GetComponent<AudioSource>())
+                     .Where(temp => temp.isPlaying))
         {
-            var temp = GameObject.FindGameObjectWithTag(localTag).GetComponent<AudioSource>();
-            if (temp.isPlaying)
-            {
-                temp.Stop();
-            }
+            temp.Stop();
         }
     }
     
     public void ChangeMusic(int newMus)
     {
-        var composition = GameObject.FindGameObjectWithTag(myTracks[newMus]).GetComponent<AudioSource>();
-        // GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<AudioSource>().playOnAwake = false;
+        var composition = GameObject.FindGameObjectWithTag(MyTracks[newMus]).GetComponent<AudioSource>();
         StopPlayingMusic();
         composition.Play();
-        PlayerPrefs.SetString("CurrentMusic", myTracks[newMus]);
-        currentTrack = myTracks[newMus];
+        composition.volume = PlayerPrefs.GetFloat("PVolume");
+        PlayerPrefs.SetString("CurrentMusic", MyTracks[newMus]);
+        CurrentTrack = MyTracks[newMus];
     }
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -34,25 +32,13 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        PlayerPrefs.SetString("CurrentMusic", AllMusic.currentTrack);
+        PlayerPrefs.SetString("CurrentMusic", AllMusic.CurrentTrack);
         SceneManager.LoadScene("GameScene");
         ResetStatistics();
     }
 
     private void Pause()
     {
-        /*foreach (var tmp in 
-                 AllMusic
-                     .myTracks
-                     .Where(tmp 
-                         => GameObject
-                             .FindGameObjectWithTag(tmp)
-                             .GetComponent<AudioSource>()
-                             .isPlaying))
-        {
-            pausedThis = tmp;
-        }*/
-
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
@@ -63,7 +49,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
         GameStatistics.Reset();
-        //ResetStatistics();
     }
 
     private static void ResetStatistics()
