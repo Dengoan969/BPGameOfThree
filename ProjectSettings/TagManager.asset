@@ -9,6 +9,8 @@ TagManager:
   - LevelOneMusic
   - Obstacle
   - LocalizationManager
+  - Layla
+  - LOTDestroyable
   layers:
   - Default
   - TransparentFX

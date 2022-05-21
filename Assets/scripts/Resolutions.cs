@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -19,7 +18,6 @@ public class Resolutions : MonoBehaviour
         }
         dropdown.AddOptions(resolutions);
     }
-    
     
     public void ChangeResolution(int newRes) 
         => Screen.SetResolution(rsl[newRes].width, rsl[newRes].height, Screen.fullScreen);

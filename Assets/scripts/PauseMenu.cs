@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -24,7 +26,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<UniMusic>().PlayMusic();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
@@ -39,7 +40,18 @@ public class PauseMenu : MonoBehaviour
 
     private void Pause()
     {
-        GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<UniMusic>().PauseMusic();
+        /*foreach (var tmp in 
+                 AllMusic
+                     .myTracks
+                     .Where(tmp 
+                         => GameObject
+                             .FindGameObjectWithTag(tmp)
+                             .GetComponent<AudioSource>()
+                             .isPlaying))
+        {
+            pausedThis = tmp;
+        }*/
+
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;

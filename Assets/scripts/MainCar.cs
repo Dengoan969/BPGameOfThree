@@ -77,6 +77,7 @@ public class MainCar : MonoBehaviour
             GameStatistics.IsGameOver = true;
         }
     }
+    
     private void ShakeCar()
     {
         
