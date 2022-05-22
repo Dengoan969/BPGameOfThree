@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class Resolutions : MonoBehaviour
     private Resolution[] rsl;
     private List<string> resolutions;
     public TMP_Dropdown dropdown;
+
     public void Awake()
     {
         resolutions = new List<string>();
@@ -17,6 +19,7 @@ public class Resolutions : MonoBehaviour
             resolutions.Add(res.width + "x" + res.height);
         }
         dropdown.AddOptions(resolutions);
+        dropdown.SetValueWithoutNotify(resolutions.IndexOf(Screen.width + "x" + Screen.height));
     }
     
     public void ChangeResolution(int newRes) 

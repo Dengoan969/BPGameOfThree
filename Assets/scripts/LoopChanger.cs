@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
-using TMPro;
 
 public class LoopChanger : MonoBehaviour
 {
@@ -39,7 +36,6 @@ public class LoopChanger : MonoBehaviour
             AllMusic.AllMusicInstance.RandomPlaying = false;
         }
         
-        
         Debug.Log($"Playing Random turned to {isRandomPressed}");
     }
 
@@ -60,6 +56,6 @@ public class LoopChanger : MonoBehaviour
         AllMusic.AllMusicInstance.RandomPlaying = true;
         nextTrackToPlay.loop = false;
         PlayerPrefs.SetString("CurrentMusic", nextTrackName);
-        nextTrackToPlay.volume = PlayerPrefs.GetFloat("PVolume");
+        nextTrackToPlay.volume = PlayerPrefs.GetFloat("PVolume", 0.7f);
     }
 }

@@ -1,11 +1,14 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class CheatCodes : MonoBehaviour
 {
     [SerializeField] public string buffer;
     [SerializeField] private float maxTimeDif = 1f;
-    private readonly List<string> validPatterns = new List<string> {"HESOYAM", "SPEEDUP"};
+    private readonly List<string> validPatterns = new List<string> {"HESOYAM", "SPEEDUP", "EVANGELION"};
     private float timeDif;
     
     private void Start()
@@ -53,6 +56,11 @@ public class CheatCodes : MonoBehaviour
                 ImplementSpeedUpCode();
             ClearBuffer();
         }
+        else if (buffer.ToUpper().EndsWith(validPatterns[2]))
+        {
+            Debug.Log("You're EVA-1");
+            ImplementEvangelion();
+        }
     }
 
     private static void ImplementHesoyamCode()
@@ -65,6 +73,28 @@ public class CheatCodes : MonoBehaviour
 
     private static void ImplementSpeedUpCode() => MainCar.speed = 750f;
 
+    private void ImplementEvangelion()
+    {
+        var square = GameObject.FindGameObjectWithTag("EvaSpec").GetComponent<SpriteRenderer>();
+        StartCoroutine(MakeTransparency(square));
+        PlayerPrefs.DeleteKey("CurrentMusic");
+        GameObject
+            .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
+            .GetComponent<AudioSource>()
+            .Pause();
+        GameObject.FindGameObjectWithTag("EvaGO").GetComponent<VideoPlayer>().Play();
+    }
+    
     private void ClearBuffer() => buffer = string.Empty;
+
+    private IEnumerator MakeTransparency(SpriteRenderer renderer)
+    {
+        for (var i = 0; i < 100; i++)
+        {
+            renderer.color = new Color(255f, 255f, 255f, i);
+            yield return new WaitForSeconds(1f);
+        }
+        
+    }
 }
 

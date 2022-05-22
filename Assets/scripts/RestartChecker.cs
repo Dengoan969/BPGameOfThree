@@ -7,19 +7,18 @@ public class RestartChecker : MonoBehaviour
         var track = PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic");
         if (track == string.Empty || track is null)
         {
-            var trackToPlay = GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<AudioSource>();
-            PlayWithConfig(trackToPlay);
+            PlayWithConfig("LevelOneMusic");
         }
         else
         {
-            var trackToPlay = GameObject.FindGameObjectWithTag(track).GetComponent<AudioSource>();
-            PlayWithConfig(trackToPlay);
+            PlayWithConfig(track);
         }
     }
 
-    private void PlayWithConfig(AudioSource track)
+    private void PlayWithConfig(string track)
     {
-        track.Play();
-        track.volume = PlayerPrefs.GetFloat("PVolume");
+        var audioTrack = GameObject.FindGameObjectWithTag(track).GetComponent<AudioSource>();
+        audioTrack.Play();
+        audioTrack.volume = PlayerPrefs.GetFloat("PVolume");
     }
 }

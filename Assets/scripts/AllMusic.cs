@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using Random = System.Random;
 
 public class AllMusic : MonoBehaviour
 {
@@ -19,9 +18,15 @@ public class AllMusic : MonoBehaviour
         "TikhiyOgonek", "Malchik_na_9",
         "Ot_Vinta", "GaParadise", 
         "Upgrade", "EmptyDreams",
-        "testShort", "ForGleb"
+        "testShort", "ForGleb", 
+        "Fortunate Son"
     };
-    
+
+    private void Start()
+    {
+        musicDropdown.SetValueWithoutNotify(MyTracks.IndexOf(PlayerPrefs.GetString("CurrentMusic")));
+    }
+
     void Awake()
     {
         AllMusicInstance = this;
@@ -31,8 +36,9 @@ public class AllMusic : MonoBehaviour
 
     private void Update()
     {
-        if (RandomPlaying && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic")).GetComponent<AudioSource>()
-            .isPlaying)
+        if (RandomPlaying && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic"))
+                .GetComponent<AudioSource>()
+                .isPlaying)
         {
             LoopChanger.LoopChangerInstance.PlayRandomNewVersion();
         }
