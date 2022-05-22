@@ -21,6 +21,8 @@ TagManager:
   - GaParadise
   - EmptyDreams
   - Upgrade
+  - testShort
+  - ForGleb
   layers:
   - Default
   - TransparentFX
