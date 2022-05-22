@@ -9,6 +9,8 @@ public class MainCar : MonoBehaviour
     public static bool isStageSizesSet;
     public static GameObject Player;
     public GameObject PlayerRef;
+    public static bool isInCar;
+    public static float deltaX;
 
     void Start()
     {
@@ -73,10 +75,59 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.CompareTag("DeadObstacle"))
         {
-            speed = 0;
-            GameStatistics.IsGameOver = true;
+            isInCar = true;
+            if (Math.Abs(collision.gameObject.transform.position.y - transform.position.y) < 35)
+            {
+                PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 250f;
+            }
+            else
+            {
+                if (collision.gameObject.name == "minicar_black")
+                {
+                    deltaX = 35f;
+                }
+                else
+                {
+                    deltaX = 40f;
+                }
+                PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 500f;
+            }
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("DeadObstacle"))
+        {
+            if (GameStatistics.Endurance <= 0)
+            {
+                speed = 0;
+                GameStatistics.IsGameOver = true;
+            }
+            GameStatistics.Endurance -= 0.01f * speed / (2 * stageSizes.y);
+            
+            if (Math.Abs(collision.gameObject.transform.position.x - transform.position.x) <= deltaX
+                && collision.gameObject.transform.position.y > transform.position.y)
+            {
+                speed = 0;
+                GameStatistics.IsGameOver = true;
+            }
+            else
+            {
+                if (collision.gameObject.transform.position.x < transform.position.x) 
+                    collision.gameObject.transform.position -= new Vector3(PlayerControl.deltaSpeed, 0, 0);
+                else 
+                    collision.gameObject.transform.position += new Vector3(PlayerControl.deltaSpeed, 0, 0);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D colission)
+    {
+        isInCar = false;
+        PlayerControl.deltaSpeed = 0.01f * speed;
+    }
+
     private void ShakeCar()
     {
         

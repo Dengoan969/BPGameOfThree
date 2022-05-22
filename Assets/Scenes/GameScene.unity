@@ -396,11 +396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 452634, guid: 553f3d7d25fcb410e90399baccc8e68a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -5504,7 +5504,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 91235667}
-  deltaSpeed: 0
   deltaAngle: 10
 --- !u!1 &1592024721
 GameObject:

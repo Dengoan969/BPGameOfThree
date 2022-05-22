@@ -5,7 +5,7 @@ public class PlayerControl : MonoBehaviour
 {
 
     public Transform player;
-    public float deltaSpeed;
+    public static float deltaSpeed;
     public float deltaAngle = 10f;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // TODO make PAUSE at escape
-        if (deltaSpeed < 0.01f * stageSizes.y)
+        if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
         {
             deltaSpeed = 0.01f * MainCar.speed;
         }
