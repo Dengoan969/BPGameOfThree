@@ -24,7 +24,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<UniMusic>().PlayMusic();
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameIsPaused = false;
@@ -33,13 +32,13 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
+        PlayerPrefs.SetString("CurrentMusic", AllMusic.CurrentTrack);
         SceneManager.LoadScene("GameScene");
         ResetStatistics();
     }
 
     private void Pause()
     {
-        GameObject.FindGameObjectWithTag("LevelOneMusic").GetComponent<UniMusic>().PauseMusic();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         gameIsPaused = true;
@@ -50,14 +49,12 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("MenuScene");
         GameStatistics.Reset();
-        //ResetStatistics();
     }
 
     private static void ResetStatistics()
     {
         GameStatistics.Fuel = 1f;
         GameStatistics.Endurance = 1f;
-        GameStatistics.Balance = 0;
         GameStatistics.IsGameOver = false;
     }
 }

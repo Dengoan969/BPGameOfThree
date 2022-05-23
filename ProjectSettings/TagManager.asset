@@ -9,6 +9,31 @@ TagManager:
   - LevelOneMusic
   - Obstacle
   - LocalizationManager
+  - Layla
+  - LOTDestroyable
+  - DLB_Zajchik
+  - 500miles
+  - Knight
+  - MatMehHymn
+  - TikhiyOgonek
+  - Malchik_na_9
+  - Ot_Vinta
+  - GaParadise
+  - EmptyDreams
+  - Upgrade
+  - testShort
+  - ForGleb
+  - Fortunate Son
+  - EvaGO
+  - EvaSpec
+  - NightDrive
+  - Syntwave mix
+  - MainMoneySound
+  - toBe
+  - Bibika
+  - EngineIdle
+  - EngineStart
+  - Fuel
   layers:
   - Default
   - TransparentFX

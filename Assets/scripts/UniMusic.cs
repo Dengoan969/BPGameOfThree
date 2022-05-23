@@ -23,6 +23,10 @@ public class UniMusic : MonoBehaviour
     
     public void StopMusic() => audioSource.Stop();
 
+    public bool IsPlayingRightFuckingNow()
+    {
+        return audioSource.isPlaying;
+    }
     private void CheckByTagAndDestroy(string inpTag)
     {
         var musicObj = GameObject.FindGameObjectsWithTag(inpTag);
