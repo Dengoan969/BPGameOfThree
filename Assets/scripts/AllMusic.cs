@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -18,13 +17,15 @@ public class AllMusic : MonoBehaviour
         "TikhiyOgonek", "Malchik_na_9",
         "Ot_Vinta", "GaParadise", 
         "Upgrade", "EmptyDreams",
-        "testShort", "ForGleb", 
-        "Fortunate Son"
+        "ForGleb", "Syntwave mix",
+        "Fortunate Son", "NightDrive"
     };
 
     private void Start()
     {
-        musicDropdown.SetValueWithoutNotify(MyTracks.IndexOf(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic")));
+        musicDropdown
+            .SetValueWithoutNotify(MyTracks
+                .IndexOf(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic")));
     }
 
     void Awake()
@@ -36,7 +37,8 @@ public class AllMusic : MonoBehaviour
 
     private void Update()
     {
-        if (RandomPlaying && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
+        if (RandomPlaying 
+            && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
                 .GetComponent<AudioSource>()
                 .isPlaying)
         {
