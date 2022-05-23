@@ -85,12 +85,9 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.CompareTag("DeadObstacle"))
         {
-            speed = 0;
-            GameStatistics.IsGameOver = true;
+            // speed = 0;
+            // GameStatistics.IsGameOver = true;
             PlayerPrefs.SetString("CurrentMusic", AllMusic.CurrentTrack);
-        }
-    }
-    
             if (!GameStatistics.IsGameOver)
             {
                 var collisionCar = collision.gameObject;
@@ -127,6 +124,7 @@ public class MainCar : MonoBehaviour
                     {
                         deltaX = 40f;
                     }
+
                     if (Math.Abs(collisionCar.transform.position.x - transform.position.x) <= deltaX
                         && collisionCar.transform.position.y > transform.position.y)
                     {
@@ -196,13 +194,18 @@ public class MainCar : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInCar = false;
-        PlayerControl.deltaSpeed = 0.01f * speed;
-        var hui = collision.gameObject.transform.parent;
-        if (hui.transform.rotation.z < 0)
-            hui.Rotate(new Vector3(0f, 0f, 3f));
-        else
-            hui.Rotate(new Vector3(0f, 0f, -3f));
+        if (collision.gameObject.CompareTag("DeadObstacle"))
+        {
+            var tmpTransform = collision.gameObject.transform.parent;
+            isInCar = false;
+            PlayerControl.deltaSpeed = 0.01f * speed;
+            
+            if (tmpTransform.transform.rotation.z < 0)
+                tmpTransform.Rotate(new Vector3(0f, 0f, 3f));
+            else
+                tmpTransform.Rotate(new Vector3(0f, 0f, -3f));
+        }
+        
         // var defaultRot = Quaternion.Euler(0f, 0f, 0f);
         // hui.rotation = Quaternion.Lerp(hui.rotation, defaultRot, PlayerControl.speed * Time.deltaTime);
     }
