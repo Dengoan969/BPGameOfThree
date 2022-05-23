@@ -55,7 +55,6 @@ public class PauseMenu : MonoBehaviour
     {
         GameStatistics.Fuel = 1f;
         GameStatistics.Endurance = 1f;
-        GameStatistics.Balance = 0;
         GameStatistics.IsGameOver = false;
     }
 }
