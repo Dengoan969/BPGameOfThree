@@ -77,7 +77,7 @@ public class CheatCodes : MonoBehaviour
     {
         var square = GameObject.FindGameObjectWithTag("EvaSpec").GetComponent<SpriteRenderer>();
         StartCoroutine(MakeTransparency(square));
-        PlayerPrefs.DeleteKey("CurrentMusic");
+        // PlayerPrefs.DeleteKey("CurrentMusic");
         GameObject
             .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
             .GetComponent<AudioSource>()

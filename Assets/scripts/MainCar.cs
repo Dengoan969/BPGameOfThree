@@ -75,6 +75,7 @@ public class MainCar : MonoBehaviour
         {
             speed = 0;
             GameStatistics.IsGameOver = true;
+            PlayerPrefs.SetString("CurrentMusic", AllMusic.CurrentTrack);
         }
     }
     

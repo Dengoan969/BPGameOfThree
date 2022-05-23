@@ -24,7 +24,7 @@ public class AllMusic : MonoBehaviour
 
     private void Start()
     {
-        musicDropdown.SetValueWithoutNotify(MyTracks.IndexOf(PlayerPrefs.GetString("CurrentMusic")));
+        musicDropdown.SetValueWithoutNotify(MyTracks.IndexOf(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic")));
     }
 
     void Awake()
@@ -36,7 +36,7 @@ public class AllMusic : MonoBehaviour
 
     private void Update()
     {
-        if (RandomPlaying && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic"))
+        if (RandomPlaying && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
                 .GetComponent<AudioSource>()
                 .isPlaying)
         {
@@ -61,7 +61,7 @@ public class AllMusic : MonoBehaviour
         var composition = GameObject.FindGameObjectWithTag(MyTracks[newMus]).GetComponent<AudioSource>();
         StopPlayingMusic();
         composition.Play();
-        composition.volume = PlayerPrefs.GetFloat("PVolume");
+        composition.volume = PlayerPrefs.GetFloat("PVolume", 0.7f);
         PlayerPrefs.SetString("CurrentMusic", MyTracks[newMus]);
         CurrentTrack = MyTracks[newMus];
     }

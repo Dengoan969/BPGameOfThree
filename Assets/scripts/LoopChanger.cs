@@ -12,7 +12,7 @@ public class LoopChanger : MonoBehaviour
     {
         isLoopPressed = !isLoopPressed;
         GameObject
-            .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic"))
+            .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
             .GetComponent<AudioSource>()
             .loop = isLoopPressed;
         Debug.Log($"Loop turned to {isLoopPressed}");
@@ -46,7 +46,7 @@ public class LoopChanger : MonoBehaviour
         var nextTrack = GameObject.FindGameObjectWithTag(nextTrackName).GetComponent<AudioSource>();
         nextTrackToPlay = nextTrack;
         GameObject
-            .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic"))
+            .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
             .GetComponent<AudioSource>()
             .Stop();
             
