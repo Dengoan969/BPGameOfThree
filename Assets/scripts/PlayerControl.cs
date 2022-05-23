@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     public float deltaAngle = 10f;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
-    private float speed = 6f;
+    public static float speed = 6f;
 
     private void Start()
     {
