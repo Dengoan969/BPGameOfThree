@@ -15,6 +15,14 @@ public class RestartChecker : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (GameStatistics.IsGameOver)
+        {
+            GameObject.FindGameObjectWithTag("EngineIdle").GetComponent<AudioSource>().Stop();
+        }
+    }
+
     private void PlayWithConfig(string track)
     {
         var audioTrack = GameObject.FindGameObjectWithTag(track).GetComponent<AudioSource>();

@@ -68,6 +68,7 @@ public class MainCar : MonoBehaviour
             case "Fuel":
                 if (GameStatistics.Fuel <= 1f)
                     GameStatistics.Fuel = 1f;
+                GameObject.FindGameObjectWithTag("Fuel").GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
                 break;
         }

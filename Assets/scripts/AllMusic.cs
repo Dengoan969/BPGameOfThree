@@ -18,7 +18,8 @@ public class AllMusic : MonoBehaviour
         "Ot_Vinta", "GaParadise", 
         "Upgrade", "EmptyDreams",
         "ForGleb", "Syntwave mix",
-        "Fortunate Son", "NightDrive"
+        "Fortunate Son", "NightDrive", 
+        "Bibika"
     };
 
     private void Start()
@@ -35,7 +36,7 @@ public class AllMusic : MonoBehaviour
         musicDropdown.AddOptions(MyTracks);
     }
 
-    private void Update()
+    void Update()
     {
         if (RandomPlaying 
             && !GameObject.FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
