@@ -81,72 +81,56 @@ public class MainCar : MonoBehaviour
                 break;
         }
 
+        // if (collision.gameObject.CompareTag("DeadObstacle"))
+        // {
+        //     speed = 0;
+        //     GameStatistics.IsGameOver = true;
+        // }
+
         if (collision.gameObject.CompareTag("DeadObstacle"))
         {
             if (!GameStatistics.IsGameOver)
             {
-                var collisionCar = collision.gameObject;
-                var parent = collisionCar.transform.parent;
+                var parent = collision.gameObject.transform.parent;
                 isInCar = true;
-                if (Math.Abs(collision.gameObject.transform.position.y - transform.position.y) < 60f
-                    && collision.gameObject.transform.position.y > transform.position.y)
+                if (collision.gameObject.name == "minicar_black")
                 {
-                    PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 250f;
-                    if (collisionCar.transform.position.x < transform.position.x
-                        && parent.rotation.z == 0)
-                    {
-                        parent.Rotate(0f, 0f, -3f);
-                        // var rotation = Quaternion.Euler(0f, 0f, -3f);
-                        // parent.rotation = Quaternion.Lerp(parent.rotation, rotation,
-                        //     PlayerControl.speed * Time.deltaTime);
-                    }
-                    else if (collisionCar.transform.position.x > transform.position.x
-                             && parent.rotation.z == 0)
-                    {
-                        parent.Rotate(0f, 0f, 3f);
-                        // var rotation = Quaternion.Euler(0f, 0f, 3f);
-                        // parent.rotation = Quaternion.Lerp(parent.rotation, rotation,
-                        //     PlayerControl.speed * Time.deltaTime);
-                    }
+                    deltaX = 35f;
                 }
                 else
                 {
-                    if (collision.gameObject.name == "minicar_black")
-                    {
-                        deltaX = 35f;
-                    }
-                    else
-                    {
-                        deltaX = 40f;
-                    }
-                    if (Math.Abs(collisionCar.transform.position.x - transform.position.x) <= deltaX
-                        && collisionCar.transform.position.y > transform.position.y)
-                    {
-                        speed = 0;
-                        GameStatistics.IsGameOver = true;
-                    }
-                    else
-                    {
-
-                        if (collisionCar.transform.position.x < transform.position.x
-                            && parent.rotation.z == 0)
-                        {
-                            parent.Rotate(0f, 0f, 3f);
-                            // var rotation = Quaternion.Euler(0f, 0f, 3f);
-                            // parent.rotation = Quaternion.Lerp(parent.rotation, rotation,
-                            //     PlayerControl.speed * Time.deltaTime);
-                        }
-                        else if (collisionCar.transform.position.x > transform.position.x
-                                 && parent.rotation.z == 0)
-                        {
-                            parent.Rotate(0f, 0f, -3f);
-                            // var rotation = Quaternion.Euler(0f, 0f, -3f);
-                            // parent.rotation = Quaternion.Lerp(parent.rotation, rotation,
-                            //     PlayerControl.speed * Time.deltaTime);
-                        }
-                    }
-
+                    deltaX = 40f;
+                }
+                if (Math.Abs(parent.position.x - transform.position.x) <= deltaX && parent.position.y > transform.position.y)
+                {
+                    speed = 0;
+                    GameStatistics.IsGameOver = true;
+                }
+                else if (Math.Abs(parent.position.y - transform.position.y) > 75f
+                    && parent.position.y > transform.position.y)
+                {
                     PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 500f;
+                    if (parent.position.x < transform.position.x)
+                    {
+                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 2f);
+                    }
+                    else if (parent.position.x > transform.position.x)
+                    {
+                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 2f);
+                    }
+                }
+                else if (Math.Abs(parent.position.y - transform.position.y) < 75f
+                         || parent.position.y < transform.position.y)
+                {
+                    PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 250f;
+                    if (parent.position.x < transform.position.x)
+                    {
+                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 2f);
+                    }
+                    else if (parent.position.x > transform.position.x)
+                    {
+                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 2f);
+                    }
                 }
             }
         }
@@ -154,49 +138,38 @@ public class MainCar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        var collisionCar = collision.gameObject;
-        var parent = collisionCar.transform.parent;
-        if (collisionCar.CompareTag("DeadObstacle"))
+        if (collision.transform.CompareTag("DeadObstacle"))
         {
-            GameStatistics.Endurance -= 0.01f * speed / (2 * stageSizes.y);
+            var parent = collision.gameObject.transform.parent;
             
-            if (Math.Abs(collisionCar.transform.position.x - transform.position.x) <= deltaX
-                && collisionCar.transform.position.y > transform.position.y)
+            GameStatistics.Endurance -= 0.01f * speed / (2 * stageSizes.y);
+            if (parent.position.x < transform.position.x)
             {
-                speed = 0;
-                GameStatistics.IsGameOver = true;
+                parent.position -= new Vector3(PlayerControl.deltaSpeed, 0, 0);
             }
             else
             {
-                if (collisionCar.transform.position.x < transform.position.x)
-                {
-                    // parent.Rotate(0f, 0f, 3f);
-                    // var rotation = Quaternion.Euler(0f, 0f, 3);
-                    // parent.rotation = Quaternion.Lerp(parent.rotation, rotation, PlayerControl.speed * Time.deltaTime);
-                    collisionCar.transform.position -= new Vector3(PlayerControl.deltaSpeed, 0, 0);
-                }
-                else
-                {
-                    // parent.Rotate(0f, 0f, -3f);
-                    // var rotation = Quaternion.Euler(0f, 0f, -3);
-                    // parent.rotation = Quaternion.Lerp(parent.rotation, rotation, PlayerControl.speed * Time.deltaTime);
-                    collisionCar.transform.position += new Vector3(PlayerControl.deltaSpeed, 0, 0);
-                }
+                parent.position += new Vector3(PlayerControl.deltaSpeed, 0, 0);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInCar = false;
-        PlayerControl.deltaSpeed = 0.01f * speed;
-        var hui = collision.gameObject.transform.parent;
-        if (hui.transform.rotation.z < 0)
-            hui.Rotate(new Vector3(0f, 0f, 3f));
-        else
-            hui.Rotate(new Vector3(0f, 0f, -3f));
-        // var defaultRot = Quaternion.Euler(0f, 0f, 0f);
-        // hui.rotation = Quaternion.Lerp(hui.rotation, defaultRot, PlayerControl.speed * Time.deltaTime);
+        if (collision.gameObject.CompareTag("DeadObstacle"))
+        {
+            PlayerControl.deltaSpeed = 0.01f * speed;
+            var parent = collision.gameObject.transform.parent;
+            if (parent.rotation != Quaternion.identity)
+            {
+                // if (parent.rotation.z < 0)
+                //     parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 2f);
+                // else
+                //     parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 2f);
+                parent.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            }
+            isInCar = false;
+        }
     }
 
     private void ShakeCar()
