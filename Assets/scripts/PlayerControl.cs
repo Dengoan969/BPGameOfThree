@@ -24,7 +24,6 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        // TODO make PAUSE at escape
         if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
         {
             if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
@@ -35,19 +34,11 @@ public class PlayerControl : MonoBehaviour
             {
                 deltaAngle -= 0.002f;
             }
-            if (player.position.x > 245f
-                || player.position.x < -245f)
+            if (player.position.y < -0.323f* stageSizes.y)
             {
-                player.position += new Vector3(0, -0.5f, 0);
+                player.position += new Vector3(0, 1f, 0);
             }
-            else
-            {
-                if (player.position.y < -155f)
-                {
-                    player.position += new Vector3(0, 1f, 0);
-                }
-            }
-            
+
             if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
                 deltaSpeed += 0.005f;
 
