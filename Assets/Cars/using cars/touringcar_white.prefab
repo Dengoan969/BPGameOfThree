@@ -55,6 +55,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: touringcar_white
       objectReference: {fileID: 0}
+    - target: {fileID: 410170, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 432500, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 461906, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -103,21 +111,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 481828, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488326, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 21201634, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21233530, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21234378, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 21259640, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 21287480, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
@@ -125,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 21295552, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8698787004082488442, guid: 16e3767e137ac4d72a3c4b489e555f9b, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.size

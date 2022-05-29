@@ -28,7 +28,7 @@ public class MainCar : MonoBehaviour
 
     void Update()
     {
-        if (!GameStatistics.IsGameOver)
+        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
         {
             if (Math.Abs(transform.position.x) > 0.28 * stageSizes.x)
             {
@@ -112,11 +112,11 @@ public class MainCar : MonoBehaviour
                     PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 500f;
                     if (parent.position.x < transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.5f);
+                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.75f);
                     }
                     else if (parent.position.x > transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.5f);
+                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.75f);
                     }
                 }
                 else if (Math.Abs(parent.position.y - transform.position.y) < 75f
@@ -125,11 +125,11 @@ public class MainCar : MonoBehaviour
                     PlayerControl.deltaSpeed = 0.3f * stageSizes.y / 250f;
                     if (parent.position.x < transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.5f);
+                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.75f);
                     }
                     else if (parent.position.x > transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.5f);
+                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.75f);
                     }
                 }
             }

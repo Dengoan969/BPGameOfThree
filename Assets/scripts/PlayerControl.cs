@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -24,17 +25,16 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         // TODO make PAUSE at escape
-        if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
+        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
         {
-            deltaSpeed = 0.01f * MainCar.speed;
-        }
-        if (deltaAngle > 1f)
-        {
-            deltaAngle -= 0.002f;
-        }
-
-        if (!GameStatistics.IsGameOver)
-        {
+            if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
+            {
+                deltaSpeed = 0.01f * MainCar.speed;
+            }
+            if (deltaAngle > 1f)
+            {
+                deltaAngle -= 0.002f;
+            }
             if (player.position.x > 245f
                 || player.position.x < -245f)
             {

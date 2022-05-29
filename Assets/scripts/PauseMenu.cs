@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class PauseMenu : MonoBehaviour
 {
-    private static bool gameIsPaused;
+    public static bool gameIsPaused;
     [FormerlySerializedAs("PauseMenuUI")] public GameObject pauseMenuUI;
     
     void Update()
@@ -31,6 +31,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
+        gameIsPaused = false;
         Time.timeScale = 1f;
         PlayerPrefs.SetString("CurrentMusic", AllMusic.CurrentTrack);
         SceneManager.LoadScene("GameScene");
