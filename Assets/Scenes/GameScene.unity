@@ -10329,7 +10329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1807273937}
-  deltaAngle: 10
 --- !u!114 &1766467197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10690,7 +10689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832270570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 485.0355, y: 485.0355, z: 485.0355}
   m_Children:
   - {fileID: 166513695}
@@ -13131,7 +13130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1041623295027417328, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1041623295027417328, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
       propertyPath: m_LocalRotation.w

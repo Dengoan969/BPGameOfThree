@@ -6,7 +6,7 @@ public class PlayerControl : MonoBehaviour
 
     public Transform player;
     public static float deltaSpeed;
-    public float deltaAngle = 10f;
+    public static float deltaAngle = 10f;
     public static Vector3 stageSizes;
     public static bool isStageSizesSet;
     public static float speed = 6f;
