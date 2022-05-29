@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: minicar_black
       objectReference: {fileID: 0}
+    - target: {fileID: 156544, guid: f86261f66904e4852be422726704ee91, type: 3}
+      propertyPath: m_TagString
+      value: Car
+      objectReference: {fileID: 0}
     - target: {fileID: 441128, guid: f86261f66904e4852be422726704ee91, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0

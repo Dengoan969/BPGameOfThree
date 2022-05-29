@@ -34,6 +34,8 @@ TagManager:
   - EngineIdle
   - EngineStart
   - Fuel
+  - Car
+  - FixSound
   layers:
   - Default
   - TransparentFX

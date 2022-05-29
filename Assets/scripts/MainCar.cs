@@ -63,16 +63,19 @@ public class MainCar : MonoBehaviour
         switch (collision.gameObject.name)
         {
             case "Money":
+                GameObject.FindGameObjectWithTag("MainMoneySound").GetComponent<AudioSource>().Play();
                 GameStatistics.Balance += 10;
-                //coinSound.Play();
+                PlayerPrefs.SetInt("Money", GameStatistics.Balance);
                 Destroy(collision.gameObject);
                 break;
             case "Fuel":
                 if (GameStatistics.Fuel <= 1f)
                     GameStatistics.Fuel = 1f;
+                GameObject.FindGameObjectWithTag("Fuel").GetComponent<AudioSource>().Play();
                 Destroy(collision.gameObject);
                 break;
             case "Repair":
+                GameObject.FindGameObjectWithTag("FixSound").GetComponent<AudioSource>().Play();
                 if (GameStatistics.Endurance + 0.5f * speed / (2 * stageSizes.y) > 1)
                     GameStatistics.Endurance = 1f;
                 else
@@ -81,13 +84,13 @@ public class MainCar : MonoBehaviour
                 break;
         }
 
-        // if (collision.gameObject.CompareTag("DeadObstacle"))
-        // {
-        //     speed = 0;
-        //     GameStatistics.IsGameOver = true;
-        // }
-
         if (collision.gameObject.CompareTag("DeadObstacle"))
+        {
+            speed = 0;
+            GameStatistics.IsGameOver = true;
+        }
+
+        if (collision.gameObject.CompareTag("Car"))
         {
             if (!GameStatistics.IsGameOver)
             {
@@ -138,7 +141,7 @@ public class MainCar : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("DeadObstacle"))
+        if (collision.transform.CompareTag("Car"))
         {
             var parent = collision.gameObject.transform.parent;
             
@@ -156,7 +159,7 @@ public class MainCar : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("DeadObstacle"))
+        if (collision.gameObject.CompareTag("Car"))
         {
             PlayerControl.deltaSpeed = 0.01f * speed;
             var parent = collision.gameObject.transform.parent;
