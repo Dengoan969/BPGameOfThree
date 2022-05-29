@@ -98,7 +98,7 @@ public class Spawner : MonoBehaviour
             }
             var newObject = Instantiate(
                 nextObject,
-                new Vector3(0, stageSizes.y, -3),
+                new Vector3(0, stageSizes.y, 0),
                 Quaternion.identity);
 
             if (randomGen.Next(0, 2) == 0)
@@ -134,12 +134,12 @@ public class Spawner : MonoBehaviour
             var nextObject = objects[randomGen.Next(0, objects.Length)];
             Instantiate(
                 nextObject,
-                new Vector3(positions[0], stageSizes.y, -1),
+                new Vector3(positions[0], stageSizes.y, 0),
                 Quaternion.identity).name = nextObject.name;
             nextObject = objects[randomGen.Next(0, objects.Length)];
             Instantiate(
                 nextObject,
-                new Vector3(positions[1], stageSizes.y, -1),
+                new Vector3(positions[1], stageSizes.y, 0),
                 Quaternion.identity).name = nextObject.name;
             while (MainCar.speed == 0)
             {
@@ -156,11 +156,11 @@ public class Spawner : MonoBehaviour
                 position = randomGen.Next(0, 2);
                 Instantiate(
                 fuelStation,
-                new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, -1),
+                new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, 0),
                 Quaternion.identity).name = fuelStation.name;
                 Instantiate(
                 fuel,
-                new Vector3(innerRoadside[position], 1.557f * stageSizes.y, -1),
+                new Vector3(innerRoadside[position], 1.557f * stageSizes.y, 0),
                 Quaternion.identity).name = fuel.name;
             }
             if (maySpawnRepair)
@@ -172,11 +172,11 @@ public class Spawner : MonoBehaviour
                     position = randomGen.Next(0, 2);
                 Instantiate(
                 repairStation,
-                new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, -1),
+                new Vector3(roadsidePositions[position], 1.557f * stageSizes.y, 0),
                 Quaternion.identity).name = nextObject.name;
                 Instantiate(
                 repair,
-                new Vector3(innerRoadside[position], 1.557f * stageSizes.y, -1),
+                new Vector3(innerRoadside[position], 1.557f * stageSizes.y, 0),
                 Quaternion.identity).name = repair.name;
             }
             yield return new WaitForSeconds(time);
@@ -193,11 +193,11 @@ public class Spawner : MonoBehaviour
             }
             Instantiate(
                     lamp,
-                    new Vector3(innerRoadside[0], stageSizes.y, -3),
+                    new Vector3(innerRoadside[0], stageSizes.y, 0),
                     Quaternion.identity).name = lamp.name;
             var newLamp = Instantiate(
                     lamp,
-                    new Vector3(innerRoadside[1], stageSizes.y, -3),
+                    new Vector3(innerRoadside[1], stageSizes.y, 0),
                     Quaternion.identity);
             newLamp.name = lamp.name;
             newLamp.transform.Rotate(0, 180, 0);
@@ -298,7 +298,7 @@ public class Spawner : MonoBehaviour
             for (var i = 0; i < count; i++)
             {
                 Instantiate(money,
-                    new Vector3(position, stageSizes.y + shift, -2),
+                    new Vector3(position, stageSizes.y + shift, 0),
                     Quaternion.identity).name = money.name;
                 shift += 0.1f * stageSizes.y;
             }
