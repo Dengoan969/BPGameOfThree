@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     private Vector3 _stageSizes;
     private float[] _roadPositions;
     private float[] _sidewalkPositions;
+    private float[] _roadsidePositions;
 
     void Start()
     {
@@ -27,11 +28,12 @@ public class Spawner : MonoBehaviour
         _roadPositions = new[]{-0.1522f * _stageSizes.x, -0.0527f * _stageSizes.x,
                                     0.1522f * _stageSizes.x, 0.0527f * _stageSizes.x};
         _sidewalkPositions = new[] { -0.25f * _stageSizes.x, 0.25f * _stageSizes.x };
+        _roadsidePositions = new[] { -0.5f * _stageSizes.x, 0.5f * _stageSizes.x };
         StartCoroutine(SpawnFuel());
         StartCoroutine(SpawnRepair());
         StartCoroutine(SpawnSidewalk());
-        StartCoroutine(SpawnRoadside(roadsidePatterns, new[] { -0.5f * _stageSizes.x, 0.5f * _stageSizes.x }));
-        StartCoroutine(SpawnCars(roadPatterns));
+        StartCoroutine(SpawnRoadside());
+        StartCoroutine(SpawnRoadPatterns(roadPatterns));
         StartCoroutine(SpawnMoney(bonuses[0], _roadPositions, 5));
     }
 
@@ -67,7 +69,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnCars(GameObject[] patterns)
+    private IEnumerator SpawnRoadPatterns(GameObject[] patterns)
     {
         var previousPattern = String.Empty;
         while (!GameStatistics.IsGameOver)
@@ -80,7 +82,7 @@ public class Spawner : MonoBehaviour
             previousPattern = nextPattern.name;
             if(nextPattern.CompareTag("Obstacle"))
             {
-                yield return Distance.WaitForDistance(0.5f*_stageSizes.y);
+                yield return Distance.WaitForDistance(0.5f * _stageSizes.y);
             }
             var spawnedPattern = Instantiate(
                 nextPattern,
@@ -103,29 +105,29 @@ public class Spawner : MonoBehaviour
 
     private bool _maySpawnFuel;
     private bool _maySpawnRepair;
-    private IEnumerator SpawnRoadside(GameObject[] objects, float[] positions)
+    private IEnumerator SpawnRoadside()
     {
         while (!GameStatistics.IsGameOver)
         {
-            var nextObject = objects[_randomGen.Next(0, objects.Length)];
+            var nextPattern = roadsidePatterns[_randomGen.Next(0, roadsidePatterns.Length)];
             Instantiate(
-                nextObject,
-                new Vector3(positions[0], _stageSizes.y, 0),
-                Quaternion.identity).name = nextObject.name;
-            nextObject = objects[_randomGen.Next(0, objects.Length)];
+                nextPattern,
+                new Vector3(_roadsidePositions[0], _stageSizes.y, 0),
+                Quaternion.identity).name = nextPattern.name;
+            nextPattern = roadsidePatterns[_randomGen.Next(0, roadsidePatterns.Length)];
             Instantiate(
-                nextObject,
-                new Vector3(positions[1], _stageSizes.y, 0),
-                Quaternion.identity).name = nextObject.name;
+                nextPattern,
+                new Vector3(_roadsidePositions[1], _stageSizes.y, 0),
+                Quaternion.identity).name = nextPattern.name;
             while (MainCar.speed == 0)
             {
                 yield return null;
             }
-            var time = 0.667f * _stageSizes.y / (MainCar.speed);
+            var time = 0.667f * _stageSizes.y / MainCar.speed;
             var position = -1;
             var roadsidePositions = new[] { -0.39f * _stageSizes.x, 0.39f * _stageSizes.x };
             if (_maySpawnFuel || _maySpawnRepair)
-                time += 0.557f * _stageSizes.y / (MainCar.speed);
+                time += 0.557f * _stageSizes.y / MainCar.speed;
             if (_maySpawnFuel)
             {
                 _maySpawnFuel = false;
@@ -149,7 +151,7 @@ public class Spawner : MonoBehaviour
                 Instantiate(
                 repairStation,
                 new Vector3(roadsidePositions[position], 1.557f * _stageSizes.y, 0),
-                Quaternion.identity).name = nextObject.name;
+                Quaternion.identity).name = nextPattern.name;
                 Instantiate(
                 repair,
                 new Vector3(_sidewalkPositions[position], 1.557f * _stageSizes.y, 0),
