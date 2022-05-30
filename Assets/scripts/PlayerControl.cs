@@ -24,7 +24,7 @@ public class PlayerControl : MonoBehaviour
     }
     void Update()
     {
-        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
+        if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
             {

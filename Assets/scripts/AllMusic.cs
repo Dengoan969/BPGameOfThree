@@ -52,7 +52,8 @@ public class AllMusic : MonoBehaviour
         foreach (var temp in MyTracks
                      .Select(localTag
                          => GameObject
-                             .FindGameObjectWithTag(localTag).GetComponent<AudioSource>())
+                             .FindGameObjectWithTag(localTag)
+                             .GetComponent<AudioSource>())
                      .Where(temp => temp.isPlaying))
         {
             temp.Stop();

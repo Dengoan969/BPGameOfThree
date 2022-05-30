@@ -28,7 +28,7 @@ public class MainCar : MonoBehaviour
 
     void Update()
     {
-        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
+        if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (Math.Abs(transform.position.x) > 0.28 * stageSizes.x)
             {

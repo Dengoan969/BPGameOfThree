@@ -7,8 +7,11 @@ public class SetMenuVolume : MonoBehaviour
     
     void Start()
     {
-        GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().volume =
-            PlayerPrefs.GetFloat("MenuVolume", 0.7f);
+        GameObject
+                .FindGameObjectWithTag("MenuMusic")
+                .GetComponent<AudioSource>()
+                .volume = PlayerPrefs.GetFloat("MenuVolume", 0.7f);
+        
         mySlider.value = PlayerPrefs.GetFloat("MenuVolume", 0.7f);
     }
 }

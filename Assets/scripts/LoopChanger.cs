@@ -19,24 +19,31 @@ public class LoopChanger : MonoBehaviour
     [FormerlySerializedAs("shuffleSprite")] public Sprite newShuffleSprite;
     
     public static LoopChanger LoopChangerInstance;
+    
     public void LoopCurrentSong()
     {
         isLoopPressed = !isLoopPressed;
+        
+        PlayerPrefs.SetString("Looping", isLoopPressed ? "on" : "off");
         ChangeLoopImage(isLoopPressed, loopButton);
-
+        
         GameObject
             .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
             .GetComponent<AudioSource>()
             .loop = isLoopPressed;
+        
         Debug.Log($"Loop turned to {isLoopPressed}");
-
     }
-
+    
     public void Start()
     {
         initialLoopSprite = loopButton.image.sprite;
         initialShuffleSprite = shuffleButton.image.sprite;
+        
+        isLoopPressed = PlayerPrefs.GetString("Looping", "off") != "on";
+        LoopCurrentSong();
     }
+    
     private void Awake()
     {
         LoopChangerInstance = this;
@@ -80,7 +87,7 @@ public class LoopChanger : MonoBehaviour
         nextTrackToPlay.volume = PlayerPrefs.GetFloat("PVolume", 0.7f);
     }
 
-    private void ChangeLoopImage(bool isPressed, Button button)
+    private void ChangeLoopImage(bool isPressed, Selectable button)
     {
         if (button == loopButton)
             button.image.sprite = isPressed ? newLoopSprite : initialLoopSprite;

@@ -27,6 +27,7 @@ public class RestartChecker : MonoBehaviour
     {
         var audioTrack = GameObject.FindGameObjectWithTag(track).GetComponent<AudioSource>();
         audioTrack.Play();
+        
         audioTrack.volume = PlayerPrefs.GetFloat("PVolume", 0.7f);
     }
 }
