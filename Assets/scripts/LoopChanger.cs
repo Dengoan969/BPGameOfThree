@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Random = System.Random;
 
 public class LoopChanger : MonoBehaviour
@@ -6,18 +8,35 @@ public class LoopChanger : MonoBehaviour
     private bool isLoopPressed;
     private bool isRandomPressed;
     private AudioSource nextTrackToPlay;
-
+    
+    public Button loopButton;
+    public Button shuffleButton;
+    
+    private Sprite initialLoopSprite;
+    private Sprite initialShuffleSprite;
+    
+    public Sprite newLoopSprite;
+    [FormerlySerializedAs("shuffleSprite")] public Sprite newShuffleSprite;
+    
     public static LoopChanger LoopChangerInstance;
     public void LoopCurrentSong()
     {
         isLoopPressed = !isLoopPressed;
+        ChangeLoopImage(isLoopPressed, loopButton);
+
         GameObject
             .FindGameObjectWithTag(PlayerPrefs.GetString("CurrentMusic", "LevelOneMusic"))
             .GetComponent<AudioSource>()
             .loop = isLoopPressed;
         Debug.Log($"Loop turned to {isLoopPressed}");
+
     }
 
+    public void Start()
+    {
+        initialLoopSprite = loopButton.image.sprite;
+        initialShuffleSprite = shuffleButton.image.sprite;
+    }
     private void Awake()
     {
         LoopChangerInstance = this;
@@ -26,6 +45,8 @@ public class LoopChanger : MonoBehaviour
     public void PlayTracksByRandom()
     {
         isRandomPressed = !isRandomPressed;
+        
+        ChangeLoopImage(isRandomPressed, shuffleButton);
         
         if(isRandomPressed)
         {
@@ -57,5 +78,13 @@ public class LoopChanger : MonoBehaviour
         nextTrackToPlay.loop = false;
         PlayerPrefs.SetString("CurrentMusic", nextTrackName);
         nextTrackToPlay.volume = PlayerPrefs.GetFloat("PVolume", 0.7f);
+    }
+
+    private void ChangeLoopImage(bool isPressed, Button button)
+    {
+        if (button == loopButton)
+            button.image.sprite = isPressed ? newLoopSprite : initialLoopSprite;
+        else
+            button.image.sprite = isPressed ? newShuffleSprite : initialShuffleSprite;
     }
 }
