@@ -7708,7 +7708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a0efbacabc4c9fbd79e6e4c9d9228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cars:
+  roadPatterns:
   - {fileID: 7931808625453250065, guid: 32fc7f522d77b6d4284d8703c82be20b, type: 3}
   - {fileID: 2258550718126578317, guid: bc77ecc4f4ecd4141af7dd9b3ad2a199, type: 3}
   - {fileID: 4297157192603105044, guid: b216980ad0473ae4e8f4625ffee52f68, type: 3}
@@ -7719,7 +7719,7 @@ MonoBehaviour:
   - {fileID: 3716547733263430905, guid: 6e143a44e7d77484f8fce82dc5c31f3d, type: 3}
   bonuses:
   - {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
-  outerRoadsideObjects:
+  roadsidePatterns:
   - {fileID: 4059461428876451136, guid: f7d2da740c9470f42bd30875cf9bf7f0, type: 3}
   - {fileID: 3507164885367528253, guid: 8360906400d17144b955c1dbc7ec1031, type: 3}
   - {fileID: 7650600542782046761, guid: cadb7ac058351374e95467508cb7bfe6, type: 3}
@@ -7728,8 +7728,8 @@ MonoBehaviour:
   fuelStation: {fileID: 13039750294562716, guid: c2fb1e75076364145950805cdb813809, type: 3}
   repair: {fileID: 562583031398466067, guid: 07a8cad1503094bcb9b4f2ef83474d7d, type: 3}
   repairStation: {fileID: 444590072853558485, guid: 622595de4de31d841bfa34534f6ebe28, type: 3}
-  lamp: {fileID: 3390685208416317617, guid: 5cc7f43d4926e8b439b1a3f1bfa8b86b, type: 3}
-  innerRoadsideObjects: {fileID: 0}
+  streetLight: {fileID: 3390685208416317617, guid: 5cc7f43d4926e8b439b1a3f1bfa8b86b, type: 3}
+  sidewalkObjects: []
 --- !u!4 &1478539223
 Transform:
   m_ObjectHideFlags: 0
@@ -7738,7 +7738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478539221}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5885761, y: 120.210785, z: -443.3401}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 18.219973, y: 18.219973, z: 18.219973}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11974,6 +11974,10 @@ PrefabInstance:
     - target: {fileID: 3665258606172690292, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
       propertyPath: m_Name
       value: road
+      objectReference: {fileID: 0}
+    - target: {fileID: 7424321808669503675, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}
+      propertyPath: m_SortingOrder
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc2a5c570ed5004e980887e69cfbddc, type: 3}

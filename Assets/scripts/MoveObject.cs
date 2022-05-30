@@ -1,43 +1,25 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveObject : MonoBehaviour
 {
-    public static Vector3 stageSizes;
-    public static bool isStageSizesSet;
-    // public static Dictionary<string, float> carsSpeeds;
+    private Vector3 _stageSizes;
 
     private void Start()
     {
-        if (!isStageSizesSet)
-        {
-            isStageSizesSet = true;
-            stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        }
-
-        // carsSpeeds = new Dictionary<string, float>()
-        // {
-        //     ["4x4_blue"] = 0.5f, 
-        //     ["cabrio_blue"] = 0.4f,
-        //     ["cabrio_yellow"] = 0.4f, 
-        //     ["minicar_black"] = 0.5f, 
-        //     ["pickup_gray"] = 0.5f,
-        //     ["pickup_red"] = 0.5f,
-        //     ["touringcar_white"] = 0.5f
-        // };
+        _stageSizes = StageSizes.GetStageSizes();
     }
     void Update()
     {
-        if (Spawner.CarsSpeeds.TryGetValue(gameObject.name, out var objectSpeed))
+        if (gameObject.CompareTag("Car"))
         {
-            transform.Translate(Vector3.down * objectSpeed * MainCar.speed * Time.deltaTime);
+            transform.Translate(Vector3.down * (0.5f * MainCar.speed * Time.deltaTime));
         }
         else
         {
             transform.Translate(Vector3.down * (MainCar.speed * Time.deltaTime));
         }
         
-        if (transform.position.y < -stageSizes.y)
+        if (transform.position.y < -_stageSizes.y)
         {
             Destroy(gameObject);
         }
