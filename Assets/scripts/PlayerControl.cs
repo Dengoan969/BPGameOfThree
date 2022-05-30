@@ -19,12 +19,11 @@ public class PlayerControl : MonoBehaviour
             isStageSizesSet = true;
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
-        //delta = 0.0025f * stageSizes.x;
         deltaSpeed = 0.01f * MainCar.speed;
     }
     void Update()
     {
-        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
+        if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
             {

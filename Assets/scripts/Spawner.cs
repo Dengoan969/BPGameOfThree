@@ -6,7 +6,7 @@ using Random = System.Random;
 public class Spawner : MonoBehaviour
 {
     public GameObject[] roadPatterns;
-    public GameObject[] bonuses;
+    public GameObject money;
     public GameObject[] roadsidePatterns;
     public GameObject fuel;
     public GameObject fuelStation;
@@ -19,6 +19,7 @@ public class Spawner : MonoBehaviour
     private float[] _roadPositions;
     private float[] _sidewalkPositions;
     private float[] _roadsidePositions;
+    private float[] _servicePositions;
 
     void Start()
     {
@@ -29,12 +30,13 @@ public class Spawner : MonoBehaviour
                                     0.1522f * _stageSizes.x, 0.0527f * _stageSizes.x};
         _sidewalkPositions = new[] { -0.25f * _stageSizes.x, 0.25f * _stageSizes.x };
         _roadsidePositions = new[] { -0.5f * _stageSizes.x, 0.5f * _stageSizes.x };
+        _servicePositions = new[] { -0.39f * _stageSizes.x, 0.39f * _stageSizes.x };
         StartCoroutine(SpawnFuel());
         StartCoroutine(SpawnRepair());
         StartCoroutine(SpawnSidewalk());
         StartCoroutine(SpawnRoadside());
-        StartCoroutine(SpawnRoadPatterns(roadPatterns));
-        StartCoroutine(SpawnMoney(bonuses[0], _roadPositions, 5));
+        StartCoroutine(SpawnRoadPatterns());
+        StartCoroutine(SpawnMoney());
     }
 
     private IEnumerator SpawnFuel()
@@ -69,12 +71,12 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnRoadPatterns(GameObject[] patterns)
+    private IEnumerator SpawnRoadPatterns()
     {
         var previousPattern = String.Empty;
         while (!GameStatistics.IsGameOver)
         {
-            var nextPattern = patterns[_randomGen.Next(0, patterns.Length)];
+            var nextPattern = roadPatterns[_randomGen.Next(0, roadPatterns.Length)];
             if (nextPattern.name == previousPattern)
             {
                 continue;
@@ -119,28 +121,28 @@ public class Spawner : MonoBehaviour
                 nextPattern,
                 new Vector3(_roadsidePositions[1], _stageSizes.y, 0),
                 Quaternion.identity).name = nextPattern.name;
-            while (MainCar.speed == 0)
-            {
-                yield return null;
-            }
-            var time = 0.667f * _stageSizes.y / MainCar.speed;
+            var waitDistance = 0.557f * _stageSizes.y;
             var position = -1;
-            var roadsidePositions = new[] { -0.39f * _stageSizes.x, 0.39f * _stageSizes.x };
+            
             if (_maySpawnFuel || _maySpawnRepair)
-                time += 0.557f * _stageSizes.y / MainCar.speed;
+            {
+                waitDistance += 0.337f * _stageSizes.y;
+            }
+            
             if (_maySpawnFuel)
             {
                 _maySpawnFuel = false;
                 position = _randomGen.Next(0, 2);
                 Instantiate(
-                fuelStation,
-                new Vector3(roadsidePositions[position], 1.557f * _stageSizes.y, 0),
-                Quaternion.identity).name = fuelStation.name;
+                    fuelStation,
+                    new Vector3(_servicePositions[position], 1.557f * _stageSizes.y, 0),
+                    Quaternion.identity).name = fuelStation.name;
                 Instantiate(
-                fuel,
-                new Vector3(_sidewalkPositions[position], 1.557f * _stageSizes.y, 0),
-                Quaternion.identity).name = fuel.name;
+                    fuel,
+                    new Vector3(_sidewalkPositions[position], 1.557f * _stageSizes.y, 0),
+                    Quaternion.identity).name = fuel.name;
             }
+
             if (_maySpawnRepair)
             {
                 _maySpawnRepair = false;
@@ -149,15 +151,16 @@ public class Spawner : MonoBehaviour
                 else
                     position = _randomGen.Next(0, 2);
                 Instantiate(
-                repairStation,
-                new Vector3(roadsidePositions[position], 1.557f * _stageSizes.y, 0),
-                Quaternion.identity).name = nextPattern.name;
+                    repairStation,
+                    new Vector3(_servicePositions[position], 1.557f * _stageSizes.y, 0),
+                    Quaternion.identity).name = repairStation.name;
                 Instantiate(
-                repair,
-                new Vector3(_sidewalkPositions[position], 1.557f * _stageSizes.y, 0),
-                Quaternion.identity).name = repair.name;
+                    repair,
+                    new Vector3(_sidewalkPositions[position], 1.557f * _stageSizes.y, 0),
+                    Quaternion.identity).name = repair.name;
             }
-            yield return new WaitForSeconds(time);
+
+            yield return Distance.WaitForDistance(waitDistance);
         }
     }
 
@@ -165,38 +168,32 @@ public class Spawner : MonoBehaviour
     {
         while (!GameStatistics.IsGameOver)
         {
-            while (MainCar.speed == 0)
-            {
-                yield return null;
-            }
             Instantiate(
                     streetLight,
                     new Vector3(_sidewalkPositions[0], _stageSizes.y, 0),
                     Quaternion.identity).name = streetLight.name;
-            var newLamp = Instantiate(
+            var spawnedStreetLight = Instantiate(
                     streetLight,
                     new Vector3(_sidewalkPositions[1], _stageSizes.y, 0),
                     Quaternion.identity);
-            newLamp.name = streetLight.name;
-            newLamp.transform.Rotate(0, 180, 0);
-            yield return Distance.WaitForDistance(0.9f*_stageSizes.y);
+            spawnedStreetLight.name = streetLight.name;
+            spawnedStreetLight.transform.Rotate(0, 180, 0);
+            yield return Distance.WaitForDistance(0.9f * _stageSizes.y);
         }
     }
 
-    private IEnumerator SpawnMoney(GameObject money, float[] positions, int count)
+    private IEnumerator SpawnMoney()
     {
         while (!GameStatistics.IsGameOver)
         {
-         var position = positions[_randomGen.Next(0, positions.Length)];
-            var shift = 0f;
-            for (var i = 0; i < count; i++)
+         var position = _roadPositions[_randomGen.Next(0, _roadPositions.Length)];
+            for (var i = 0; i < 5; i++)
             {
                 Instantiate(money,
-                    new Vector3(position, _stageSizes.y + shift, 0),
+                    new Vector3(position, _stageSizes.y + i * 0.1f * _stageSizes.y, 0),
                     Quaternion.identity).name = money.name;
-                shift += 0.1f * _stageSizes.y;
             }
-            yield return Distance.WaitForDistance(1f * _stageSizes.y);
+            yield return Distance.WaitForDistance(_stageSizes.y);
         }
     }
 }

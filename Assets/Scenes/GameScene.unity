@@ -7717,8 +7717,7 @@ MonoBehaviour:
   - {fileID: 6851764818892924493, guid: e398abb056ea4bd4e97a8a9d762fb5a4, type: 3}
   - {fileID: 3754279976791254183, guid: 2f949732c0b409a4da72e3a428bb98f6, type: 3}
   - {fileID: 3716547733263430905, guid: 6e143a44e7d77484f8fce82dc5c31f3d, type: 3}
-  bonuses:
-  - {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
+  money: {fileID: 8202991708563904787, guid: 861e981bd1612bf4085f7dc64096964e, type: 3}
   roadsidePatterns:
   - {fileID: 4059461428876451136, guid: f7d2da740c9470f42bd30875cf9bf7f0, type: 3}
   - {fileID: 3507164885367528253, guid: 8360906400d17144b955c1dbc7ec1031, type: 3}

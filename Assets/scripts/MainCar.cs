@@ -28,7 +28,7 @@ public class MainCar : MonoBehaviour
 
     void Update()
     {
-        if (!GameStatistics.IsGameOver && !PauseMenu.gameIsPaused)
+        if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
             if (Math.Abs(transform.position.x) > 0.28 * stageSizes.x)
             {
@@ -165,18 +165,9 @@ public class MainCar : MonoBehaviour
             var parent = collision.gameObject.transform.parent;
             if (parent.rotation != Quaternion.identity)
             {
-                // if (parent.rotation.z < 0)
-                //     parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 2f);
-                // else
-                //     parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 2f);
                 parent.rotation = new Quaternion(0f, 0f, 0f, 0f);
             }
             isInCar = false;
         }
-    }
-
-    private void ShakeCar()
-    {
-        
     }
 }
