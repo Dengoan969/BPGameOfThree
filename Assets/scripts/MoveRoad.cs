@@ -22,7 +22,7 @@ public class MoveRoad : MonoBehaviour
     {
         if (!GameStatistics.IsGameOver)
         {
-            var translation = Vector3.down * MainCar.speed * Time.deltaTime;
+            var translation = Vector3.down * MainCar.Speed * Time.deltaTime;
             CloneRoad(transform.position.y + translation.y);
             transform.Translate(translation);
             if (transform.position.y < -stageSizes.y)

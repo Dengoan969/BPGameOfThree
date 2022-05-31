@@ -57,8 +57,8 @@ public class PauseMenu : MonoBehaviour
         GameStatistics.Fuel = 1f;
         GameStatistics.Endurance = 1f;
         GameStatistics.IsGameOver = false;
-        MainCar.speed = 0.3f * MainCar.stageSizes.y;
-        PlayerControl.deltaSpeed = 0.01f * MainCar.speed;
+        MainCar.Speed = 0.3f * MainCar.StageSizes.y;
+        PlayerControl.deltaSpeed = 0.01f * MainCar.Speed;
         PlayerControl.deltaAngle = 10f;
         GameStatistics.Balance = 0;
 

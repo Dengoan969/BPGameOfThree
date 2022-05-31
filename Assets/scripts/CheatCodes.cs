@@ -71,7 +71,7 @@ public class CheatCodes : MonoBehaviour
         ((PolygonCollider2D) MainCar.Player.GetComponent(typeof(PolygonCollider2D))).enabled = false;
     }
 
-    private static void ImplementSpeedUpCode() => MainCar.speed = 750f;
+    private static void ImplementSpeedUpCode() => MainCar.Speed = 750f;
 
     private void ImplementEvangelion()
     {

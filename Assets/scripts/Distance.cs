@@ -9,7 +9,7 @@ public class Distance
         var currentDistance = 0f;
         while (currentDistance < distance)
         {
-            currentDistance += MainCar.speed * Time.deltaTime;
+            currentDistance += MainCar.Speed * Time.deltaTime;
             yield return new WaitForSeconds(Time.deltaTime);
         }
     }

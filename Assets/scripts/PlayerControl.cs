@@ -19,15 +19,15 @@ public class PlayerControl : MonoBehaviour
             isStageSizesSet = true;
             stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         }
-        deltaSpeed = 0.01f * MainCar.speed;
+        deltaSpeed = 0.01f * MainCar.Speed;
     }
     void Update()
     {
         if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
-            if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.isInCar)
+            if (deltaSpeed < 0.01f * stageSizes.y && !MainCar.IsInCar)
             {
-                deltaSpeed = 0.01f * MainCar.speed;
+                deltaSpeed = 0.01f * MainCar.Speed;
             }
             if (deltaAngle > 1f)
             {
@@ -38,7 +38,7 @@ public class PlayerControl : MonoBehaviour
                 player.position += new Vector3(0, 1f, 0);
             }
 
-            if (MainCar.speed % 10 == 0 && Math.Abs(MainCar.speed - 50f) > 10e-9)
+            if (MainCar.Speed % 10 == 0 && Math.Abs(MainCar.Speed - 50f) > 10e-9)
                 deltaSpeed += 0.005f;
 
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
