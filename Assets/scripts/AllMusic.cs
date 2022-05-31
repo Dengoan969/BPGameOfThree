@@ -19,7 +19,7 @@ public class AllMusic : MonoBehaviour
         "Upgrade", "EmptyDreams",
         "ForGleb", "Syntwave mix",
         "Fortunate Son", "NightDrive", 
-        "Bibika"
+        "Bibika", "Lesnik-KiSH"
     };
     
     private void Start()

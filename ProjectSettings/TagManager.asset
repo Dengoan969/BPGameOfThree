@@ -36,6 +36,7 @@ TagManager:
   - Fuel
   - Car
   - FixSound
+  - Lesnik-KiSH
   layers:
   - Default
   - TransparentFX
