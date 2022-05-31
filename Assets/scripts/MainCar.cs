@@ -82,6 +82,19 @@ public class MainCar : MonoBehaviour
                 break;
         }
 
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            GameStatistics.Endurance -= 0.2f * Speed / (2 * StageSizes.y);
+            collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
+        }
+        
+        if (collision.gameObject.CompareTag("LampObstacle"))
+        {
+            GameStatistics.Endurance -= 0.8f * Speed / (2 * StageSizes.y);
+            //collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
+            Destroy(collision.transform.parent.gameObject);
+        }
+        
         if (collision.gameObject.CompareTag("DeadObstacle"))
         {
             Speed = 0;
@@ -90,6 +103,7 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Car"))
         {
+            GameStatistics.Endurance -= 0.1f * Speed / (2 * StageSizes.y);
             if (!GameStatistics.IsGameOver)
             {
                 var parent = collision.gameObject.transform.parent;

@@ -54,9 +54,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2763106655533245964}
   - component: {fileID: 100317345847423241}
+  - component: {fileID: 8323020425427265514}
   m_Layer: 0
   m_Name: pixlr-bg-result (36)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,7 +115,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 22c05bcc460f85a4f8a4f61cae8171b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -126,3 +127,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &8323020425427265514
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5349022111659924768}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.19, y: 2.59}
+    newSize: {x: 3.19, y: 2.59}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.14139412, y: 0.23007008}
+      - {x: -0.05484278, y: 0.68712574}
+      - {x: -0.085, y: 0.695}
+      - {x: -0.09925151, y: 0.6731886}
+      - {x: -0.2824109, y: 0.23441356}
+      - {x: -0.42847928, y: 0.22429428}
+      - {x: -0.435, y: -0.275}
+      - {x: -0.40456185, y: -0.30916056}
+      - {x: 0.235, y: -0.315}
+      - {x: 0.285, y: -0.275}
+      - {x: 0.285, y: 0.18122008}
+      - {x: 0.235, y: 0.23318861}
