@@ -40,6 +40,8 @@ TagManager:
   - Lesnik-KiSH
   - ObstacleCrash
   - DeadCrashAudio
+  - FuelRunOut
+  - LampCrash
   layers:
   - Default
   - TransparentFX

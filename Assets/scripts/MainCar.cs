@@ -34,10 +34,19 @@ public class MainCar : MonoBehaviour
                 GameStatistics.Endurance -= 0.1f * Time.deltaTime;
             }
 
-            if (GameStatistics.Fuel <= 0 || GameStatistics.Endurance <= 0 || transform.position.y < -300f)
+            if (GameStatistics.Fuel <= 0 || transform.position.y < -300f)
             {
                 Speed = 0;
+                GameObject.FindGameObjectWithTag("FuelRunOut").GetComponent<AudioSource>().Play();
                 GameStatistics.IsGameOver = true;
+            }
+
+            if (GameStatistics.Endurance <= 0)
+            {
+                Speed = 0;
+                GameObject.FindGameObjectWithTag("DeadCrashAudio").GetComponent<AudioSource>().Play();
+                GameStatistics.IsGameOver = true;
+                
             }
 
             if (Speed < 2 * StageSizes.y && !GameStatistics.IsGameOver)
@@ -92,6 +101,7 @@ public class MainCar : MonoBehaviour
         if (collision.gameObject.CompareTag("LampObstacle"))
         {
             GameStatistics.Endurance -= 0.8f * Speed / (2 * StageSizes.y);
+            GameObject.FindGameObjectWithTag("LampCrash").GetComponent<AudioSource>().Play();
             //collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
             Destroy(collision.transform.parent.gameObject);
         }
