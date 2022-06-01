@@ -1,0 +1,5 @@
+{
+	"name": "GameAssembly",
+	"references": [ "Unity.TextMeshPro" ],
+	"optionalUnityReferences": [ "TestAssemblies" ]
+}
