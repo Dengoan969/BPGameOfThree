@@ -84,6 +84,7 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
+            GameObject.FindGameObjectWithTag("ObstacleCrash").GetComponent<AudioSource>().Play();
             GameStatistics.Endurance -= 0.2f * Speed / (2 * StageSizes.y);
             collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
         }
@@ -99,6 +100,7 @@ public class MainCar : MonoBehaviour
         {
             Speed = 0;
             GameStatistics.IsGameOver = true;
+            GameObject.FindGameObjectWithTag("DeadCrashAudio").GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.CompareTag("Car"))
@@ -120,6 +122,7 @@ public class MainCar : MonoBehaviour
                 {
                     Speed = 0;
                     GameStatistics.IsGameOver = true;
+                    GameObject.FindGameObjectWithTag("DeadCrashAudio").GetComponent<AudioSource>().Play();
                 }
                 else if (Math.Abs(parent.position.y - transform.position.y) > 75f
                     && parent.position.y > transform.position.y)

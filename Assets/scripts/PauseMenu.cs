@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -11,9 +12,19 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused && !GameObject.Find("PanelS").activeSelf)
+            if (GameIsPaused)
             {
-                Resume();
+                try
+                {
+                    if (!GameObject.Find("PanelS").activeSelf)
+                    {
+                        Resume();
+                    }
+                }
+                catch (Exception)
+                {
+                    Resume();
+                }
             }
             else
             {

@@ -38,6 +38,8 @@ TagManager:
   - FixSound
   - LampObstacle
   - Lesnik-KiSH
+  - ObstacleCrash
+  - DeadCrashAudio
   layers:
   - Default
   - TransparentFX
