@@ -72,7 +72,6 @@ public class MainCar : MonoBehaviour
             case "Money":
                 GameObject.FindGameObjectWithTag("MainMoneySound").GetComponent<AudioSource>().Play();
                 GameStatistics.Balance += 10;
-                PlayerPrefs.SetInt("Money", GameStatistics.Balance);
                 Destroy(collision.gameObject);
                 break;
             case "Fuel":
