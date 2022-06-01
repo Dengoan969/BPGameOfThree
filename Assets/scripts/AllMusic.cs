@@ -19,9 +19,9 @@ public class AllMusic : MonoBehaviour
         "Upgrade", "EmptyDreams",
         "ForGleb", "Syntwave mix",
         "Fortunate Son", "NightDrive", 
-        "Bibika"
+        "Bibika", "Lesnik-KiSH"
     };
-
+    
     private void Start()
     {
         musicDropdown
@@ -52,7 +52,8 @@ public class AllMusic : MonoBehaviour
         foreach (var temp in MyTracks
                      .Select(localTag
                          => GameObject
-                             .FindGameObjectWithTag(localTag).GetComponent<AudioSource>())
+                             .FindGameObjectWithTag(localTag)
+                             .GetComponent<AudioSource>())
                      .Where(temp => temp.isPlaying))
         {
             temp.Stop();

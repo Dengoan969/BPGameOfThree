@@ -7,6 +7,7 @@ public class SettingsMenu : MonoBehaviour
     public void AdjustAudioVolume(float sliderValue)
     {
         GameObject.FindGameObjectWithTag("MenuMusic").GetComponent<AudioSource>().volume = sliderValue;
+        GameObject.Find("Welcome").GetComponent<AudioSource>().volume = sliderValue;
         PlayerPrefs.SetFloat("MenuVolume", sliderValue);
     }
     

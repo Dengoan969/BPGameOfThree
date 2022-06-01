@@ -37,6 +37,7 @@ TagManager:
   - Car
   - FixSound
   - LampObstacle
+  - Lesnik-KiSH
   layers:
   - Default
   - TransparentFX
