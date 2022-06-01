@@ -6,15 +6,10 @@ public class MoveRoad : MonoBehaviour
     public GameObject road;
     private bool isDown;
     public static Vector3 stageSizes;
-    public static bool isStageSizesSet;
 
     void Start()
     {
-        if (!isStageSizesSet)
-        {
-            isStageSizesSet = true;
-            stageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        }
+        stageSizes = StageSizes.GetStageSizes();
         CloneRoad(transform.position.y);
     }
 
