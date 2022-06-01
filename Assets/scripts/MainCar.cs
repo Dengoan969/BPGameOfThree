@@ -5,23 +5,17 @@ using System.Collections;
 public class MainCar : MonoBehaviour
 {
     public static float Speed;
-    public static Vector3 StageSizes;
-    public static bool IsStageSizesSet;
     public static GameObject Player;
     public GameObject playerRef;
     public static bool IsInCar;
     public static float DeltaX;
+    public static Vector3 StagesSizes;
 
     void Start()
     {
-        if (!IsStageSizesSet)
-        {
-            IsStageSizesSet = true;
-            StageSizes = 2 * Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        }
-
+        StagesSizes = StageSizes.GetStageSizes();
         Player = playerRef;
-        Speed = 0.3f * StageSizes.y;
+        Speed = 0.3f * StagesSizes.y;
         StartCoroutine(FuelControl());
     }
 
@@ -29,7 +23,7 @@ public class MainCar : MonoBehaviour
     {
         if (!GameStatistics.IsGameOver && !PauseMenu.GameIsPaused)
         {
-            if (Math.Abs(transform.position.x) > 0.28 * StageSizes.x)
+            if (Math.Abs(transform.position.x) > 0.28 * StagesSizes.x)
             {
                 GameStatistics.Endurance -= 0.1f * Time.deltaTime;
             }
@@ -40,9 +34,9 @@ public class MainCar : MonoBehaviour
                 GameStatistics.IsGameOver = true;
             }
 
-            if (Speed < 2 * StageSizes.y && !GameStatistics.IsGameOver)
+            if (Speed < 2 * StagesSizes.y && !GameStatistics.IsGameOver)
             {
-                Speed += 0.01f * StageSizes.y * Time.deltaTime;
+                Speed += 0.01f * StagesSizes.y * Time.deltaTime;
             }
         }
     }
@@ -51,7 +45,7 @@ public class MainCar : MonoBehaviour
     {
         while (!GameStatistics.IsGameOver)
         {
-            yield return Distance.WaitForDistance(0.01f*StageSizes.y);
+            yield return Distance.WaitForDistance(0.01f*StagesSizes.y);
             GameStatistics.Fuel -= 0.05f * Time.deltaTime;
         }
     }
@@ -74,10 +68,10 @@ public class MainCar : MonoBehaviour
                 break;
             case "Repair":
                 GameObject.FindGameObjectWithTag("FixSound").GetComponent<AudioSource>().Play();
-                if (GameStatistics.Endurance + 0.5f * Speed / (2 * StageSizes.y) > 1)
+                if (GameStatistics.Endurance + 0.5f * Speed / (2 * StagesSizes.y) > 1)
                     GameStatistics.Endurance = 1f;
                 else
-                    GameStatistics.Endurance += 0.75f * Speed / (2 * StageSizes.y);
+                    GameStatistics.Endurance += 0.75f * Speed / (2 * StagesSizes.y);
                 Destroy(collision.gameObject);
                 break;
         }
@@ -85,15 +79,26 @@ public class MainCar : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             GameObject.FindGameObjectWithTag("ObstacleCrash").GetComponent<AudioSource>().Play();
-            GameStatistics.Endurance -= 0.2f * Speed / (2 * StageSizes.y);
+            GameStatistics.Endurance -= 0.2f * Speed / (2 * StagesSizes.y);
             collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
         }
         
         if (collision.gameObject.CompareTag("LampObstacle"))
         {
-            GameStatistics.Endurance -= 0.8f * Speed / (2 * StageSizes.y);
-            //collision.gameObject.transform.rotation = Quaternion.Euler(70, 0, 0);
-            Destroy(collision.transform.parent.gameObject);
+            GameStatistics.Endurance -= 0.8f * Speed / (2 * StagesSizes.y);
+            if (collision.gameObject.transform.position.x < 0)
+            {
+                collision.gameObject.transform.position += new Vector3(-45f, 0f, 0f);
+                transform.position += new Vector3(15f, 0, 0);
+                collision.gameObject.transform.rotation = Quaternion.Euler(0, 0, 30f);
+            }
+            else
+            {
+                collision.gameObject.transform.parent.rotation = Quaternion.Euler(0f, 0f, 0f);
+                collision.gameObject.transform.position += new Vector3(-30f, 0f, 0f);
+                transform.position += new Vector3(-15f, 0, 0);
+                collision.gameObject.transform.rotation = Quaternion.Euler(0, 180, 30f);
+            }
         }
         
         if (collision.gameObject.CompareTag("DeadObstacle"))
@@ -105,7 +110,7 @@ public class MainCar : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Car"))
         {
-            GameStatistics.Endurance -= 0.1f * Speed / (2 * StageSizes.y);
+            GameStatistics.Endurance -= 0.1f * Speed / (2 * StagesSizes.y);
             if (!GameStatistics.IsGameOver)
             {
                 var parent = collision.gameObject.transform.parent;
@@ -127,27 +132,27 @@ public class MainCar : MonoBehaviour
                 else if (Math.Abs(parent.position.y - transform.position.y) > 75f
                     && parent.position.y > transform.position.y)
                 {
-                    PlayerControl.deltaSpeed = 0.3f * StageSizes.y / 500f;
+                    PlayerControl.DeltaSpeed = 0.3f * StagesSizes.y / 500f;
                     if (parent.position.x < transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.75f);
+                        parent.Rotate(0f, 0f, -PlayerControl.DeltaAngle / 1.75f);
                     }
                     else if (parent.position.x > transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.75f);
+                        parent.Rotate(0f, 0f, PlayerControl.DeltaAngle / 1.75f);
                     }
                 }
                 else if (Math.Abs(parent.position.y - transform.position.y) < 75f
                          || parent.position.y < transform.position.y)
                 {
-                    PlayerControl.deltaSpeed = 0.3f * StageSizes.y / 250f;
+                    PlayerControl.DeltaSpeed = 0.3f * StagesSizes.y / 250f;
                     if (parent.position.x < transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, PlayerControl.deltaAngle / 1.75f);
+                        parent.Rotate(0f, 0f, PlayerControl.DeltaAngle / 1.75f);
                     }
                     else if (parent.position.x > transform.position.x)
                     {
-                        parent.Rotate(0f, 0f, -PlayerControl.deltaAngle / 1.75f);
+                        parent.Rotate(0f, 0f, -PlayerControl.DeltaAngle / 1.75f);
                     }
                 }
             }
@@ -160,14 +165,14 @@ public class MainCar : MonoBehaviour
         {
             var parent = collision.gameObject.transform.parent;
             
-            GameStatistics.Endurance -= 0.01f * Speed / (2 * StageSizes.y);
+            GameStatistics.Endurance -= 0.01f * Speed / (2 * StagesSizes.y);
             if (parent.position.x < transform.position.x)
             {
-                parent.position -= new Vector3(PlayerControl.deltaSpeed, 0, 0);
+                parent.position -= new Vector3(PlayerControl.DeltaSpeed, 0, 0);
             }
             else
             {
-                parent.position += new Vector3(PlayerControl.deltaSpeed, 0, 0);
+                parent.position += new Vector3(PlayerControl.DeltaSpeed, 0, 0);
             }
         }
     }
@@ -176,7 +181,7 @@ public class MainCar : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Car"))
         {
-            PlayerControl.deltaSpeed = 0.01f * Speed;
+            PlayerControl.DeltaSpeed = 0.01f * Speed;
             var parent = collision.gameObject.transform.parent;
             if (parent.rotation != Quaternion.identity)
             {
