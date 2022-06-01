@@ -42,6 +42,7 @@ TagManager:
   - DeadCrashAudio
   - FuelRunOut
   - LampCrash
+  - CanvasForGAMEOVER
   layers:
   - Default
   - TransparentFX

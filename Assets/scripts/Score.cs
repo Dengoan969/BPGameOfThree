@@ -5,13 +5,11 @@ public class Score : MonoBehaviour
 {
     public Text score;
     public Text best;
-
+    public GameObject gameover;
+    
     void Start()
     {
-        score = GameObject.Find("score_text").GetComponent<Text>();
         score.text = GameStatistics.Balance.ToString();
-        
-        best = GameObject.Find("best").GetComponent<Text>();
         best.text = "Best: " + PlayerPrefs.GetInt("best_res", 0);
     }
 
@@ -23,6 +21,8 @@ public class Score : MonoBehaviour
             {
                 PlayerPrefs.SetInt("best_res", GameStatistics.Balance);
             }
+
+            gameover.SetActive(true);
         }
         score.text = GameStatistics.Balance.ToString();
     }

@@ -43,7 +43,7 @@ public class MainCar : MonoBehaviour
                 
             }
 
-            if (Speed < 2 * StageSizes.y && !GameStatistics.IsGameOver)
+            if (Speed < 2 * StagesSizes.y && !GameStatistics.IsGameOver)
             {
                 Speed += 0.01f * StagesSizes.y * Time.deltaTime;
             }
@@ -108,6 +108,7 @@ public class MainCar : MonoBehaviour
                 collision.gameObject.transform.rotation = Quaternion.Euler(0, 180, 30f);
             }
             GameObject.FindGameObjectWithTag("LampCrash").GetComponent<AudioSource>().Play();
+            collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         
         if (collision.gameObject.CompareTag("DeadObstacle"))
