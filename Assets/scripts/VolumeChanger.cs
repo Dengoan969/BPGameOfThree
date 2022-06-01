@@ -25,7 +25,15 @@ public class VolumeChanger : MonoBehaviour
 
     public void ChangeSurround(float sliderValue)
     {
-        var surrounds = new List<string> {"EngineIdle", "MainMoneySound", "Fuel", "FixSound", "ObstacleCrash", "DeadCrashAudio"}; 
+        var surrounds = new List<string> 
+        {
+            "EngineIdle", "MainMoneySound", 
+            "Fuel", "FixSound", 
+            "ObstacleCrash", "DeadCrashAudio", 
+            "LampCrash", "FuelRunOut"
+            
+        }; 
+        
         foreach (var sound in surrounds)
         {
             GameObject.FindGameObjectWithTag(sound).GetComponent<AudioSource>().volume = sliderValue;
