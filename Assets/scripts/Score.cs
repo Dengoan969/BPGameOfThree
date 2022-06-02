@@ -7,13 +7,13 @@ public class Score : MonoBehaviour
     public Text best;
     public GameObject gameover;
     
-    void Start()
+    public void Start()
     {
         score.text = GameStatistics.Balance.ToString();
         best.text = "Best: " + PlayerPrefs.GetInt("best_res", 0);
     }
 
-    void Update()
+    public void Update()
     {
         if (GameStatistics.IsGameOver)
         {

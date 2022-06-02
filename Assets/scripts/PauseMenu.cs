@@ -72,6 +72,5 @@ public class PauseMenu : MonoBehaviour
         PlayerControl.DeltaSpeed = 0.01f * MainCar.Speed;
         PlayerControl.DeltaAngle = 10f;
         GameStatistics.Balance = 0;
-
     }
 }

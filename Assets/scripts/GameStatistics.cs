@@ -9,6 +9,7 @@ public static class GameStatistics
 
     public static void Reset()
     {
+        Balance = 0;
         IsGameOver = false;
         Endurance = 1f;
         Fuel = 1f;
